@@ -5,7 +5,7 @@ import Section3 from "./section3/section3";
 import { Stack } from "@mui/material";
 
 export const SidebarStyle = {
-    height: "944px",
+    height: "fit-content",
     width: "232px", // need to use 1440px
     // position: "fixed",
     display: "flex",
@@ -14,13 +14,14 @@ export const SidebarStyle = {
     boxSizing: "border-box", // Include padding and border in element's width and height
     padding: "32px 16px 32px 16px",
     alignment: "left",
-    background: "#FAFAFA",
+    backgroundColor: "#FAFAFA",
+    // boarder : "1px solid #EAEAEA",
 };
 
 export default function SideBar() {
     return (
         <Box sx={SidebarStyle}>
-            <Stack direction="column" spacing={2}>
+            <Stack direction="column" spacing={0}>
                 <Section1 />
                 <Section2 />
                 <Section3 />
