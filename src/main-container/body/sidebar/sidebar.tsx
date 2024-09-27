@@ -14,6 +14,7 @@ export const SidebarStyle = {
     boxSizing: "border-box", // Include padding and border in element's width and height
     padding: "32px 16px 32px 16px",
     alignment: "left",
+    background: "#FAFAFA",
 };
 
 export default function SideBar() {

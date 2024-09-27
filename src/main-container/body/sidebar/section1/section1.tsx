@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Icon, Stack, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 
 export const Section1Style = {
@@ -13,7 +13,20 @@ export const Section1Style = {
     // padding: "32px 16px 32px 16px",
     alignment: "left",
 };
-
+export const ItemStyle = {
+    width: "200px", // need to use 1440px
+    height: "32px",
+    padding: "8px",
+    // backgroundColor: "green",
+    // position: "fixed",
+    display: "flex",
+    position: "relative", // Keep it relative to ensure scrolling
+    margin: 0, // Remove all margins
+    //boxSizing: "border-box", // Include padding and border in element's width and height
+    //alignment: "center-left",
+   // alignItems: "center",
+    alignment: "left",
+};
 export default function Section1() {
     return (
         <Box sx={Section1Style}>
@@ -26,7 +39,7 @@ export default function Section1() {
                 >
                     <Typography
                         sx={{
-                            padding: "8px 8px 8px 8px",
+                            padding: "8px",
                             fontWeight: "600",
                             fontSize: "11px",
                             lineHeight: "13.31px",
@@ -35,6 +48,33 @@ export default function Section1() {
                         color="#7A7A7A"
                     >
                         Dahboard
+                    </Typography>
+                </Box>
+                <Box
+                    sx={
+                        ItemStyle
+                    }
+                    >
+                    <Icon>
+                        <Box
+                            component="img"
+                            src="analytics.svg"
+                            alt="icon"
+                            width="14px"
+                            height="14px"
+                            alignItems={"left"}
+                           // marginBottom={4}
+                        />
+                    </Icon>
+                    <Typography
+                        sx={{
+                            fontWeight: "600",
+                            fontSize: "13px",
+                            lineHeight: "16px",
+                            letterSpacing: "-0.01em",
+                        }}
+                    >
+                        Analytics
                     </Typography>
                 </Box>
                 <div>2</div>
