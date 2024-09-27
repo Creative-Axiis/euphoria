@@ -16,13 +16,13 @@ export const Section1Style = {
 export const ItemStyle = {
     width: "200px", // need to use 1440px
     height: "32px",
-    padding: "8px",
+    padding: "8px 8px 8px 8px",
     // backgroundColor: "green",
     // position: "fixed",
     display: "flex",
     position: "relative", // Keep it relative to ensure scrolling
     margin: 0, // Remove all margins
-    //boxSizing: "border-box", // Include padding and border in element's width and height
+    boxSizing: "border-box", // Include padding and border in element's width and height
     //alignment: "center-left",
    // alignItems: "center",
     alignment: "left",
@@ -51,21 +51,19 @@ export default function Section1() {
                     </Typography>
                 </Box>
                 <Box
-                    sx={
-                        ItemStyle
-                    }
-                    >
-                    <Icon>
+                    sx={ItemStyle} >
+                        
+                    
                         <Box
                             component="img"
                             src="analytics.svg"
                             alt="icon"
                             width="14px"
                             height="14px"
-                            alignItems={"left"}
-                           // marginBottom={4}
+                            
+                           // marginBottom={4}nItems={"left"}
                         />
-                    </Icon>
+                    
                     <Typography
                         sx={{
                             fontWeight: "600",
