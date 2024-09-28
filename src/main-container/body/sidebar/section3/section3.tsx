@@ -37,11 +37,17 @@ export const ItemStyle = {
         backgroundColor: "#5654D4", // Light background on hover
         cursor: "pointer", // Pointer cursor on hover
         boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow on hover
+        "& .MuiTypography-root": {
+            color: "#FFFFFF", // White color
+        },
     },
     "&:active": {
         backgroundColor: "#5654D4", // Darker background on click
         transform: "scale(0.98)", // Slight "press" effect
         boxShadow: "none", // Remove shadow on click
+        "& .MuiTypography-root": {
+            color: "#FFFFFF", // White color
+        },
     },
     // Hover & Click effect End
 };

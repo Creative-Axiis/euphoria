@@ -37,11 +37,17 @@ export const ItemStyle = {
         backgroundColor: "#5654D4", // Light background on hover
         cursor: "pointer", // Pointer cursor on hover
         boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow on hover
+        "& .MuiTypography-root": {
+            color: "#FFFFFF", // White color
+        },
     },
     "&:active": {
         backgroundColor: "#5654D4", // Darker background on click
         transform: "scale(0.98)", // Slight "press" effect
         boxShadow: "none", // Remove shadow on click
+        "& .MuiTypography-root": {
+            color: "#FFFFFF", // White color
+        },
     },
     // Hover & Click effect End
 };
@@ -112,7 +118,7 @@ export default function Section2() {
                         src="dropdown.svg"
                         alt="icon"
                     />
-                    <Typography sx={ItemTextStyle}>E-commerce</Typography>
+                    <Typography sx={ItemTextStyle}>CRM</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
                 <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
@@ -136,7 +142,7 @@ export default function Section2() {
                         src="dropdown.svg"
                         alt="icon"
                     />
-                    <Typography sx={ItemTextStyle}>E-commerce</Typography>
+                    <Typography sx={ItemTextStyle}>Project Management</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
                 <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
@@ -160,7 +166,7 @@ export default function Section2() {
                         src="dropdown.svg"
                         alt="icon"
                     />
-                    <Typography sx={ItemTextStyle}>E-commerce</Typography>
+                    <Typography sx={ItemTextStyle}>Booking</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
                 <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
@@ -184,7 +190,7 @@ export default function Section2() {
                         src="dropdown.svg"
                         alt="icon"
                     />
-                    <Typography sx={ItemTextStyle}>E-commerce</Typography>
+                    <Typography sx={ItemTextStyle}>Kanban</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
                 <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
@@ -208,7 +214,7 @@ export default function Section2() {
                         src="dropdown.svg"
                         alt="icon"
                     />
-                    <Typography sx={ItemTextStyle}>E-commerce</Typography>
+                    <Typography sx={ItemTextStyle}>Chat</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
                 <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
@@ -232,7 +238,7 @@ export default function Section2() {
                         src="dropdown.svg"
                         alt="icon"
                     />
-                    <Typography sx={ItemTextStyle}>E-commerce</Typography>
+                    <Typography sx={ItemTextStyle}>Event</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
                 <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
@@ -256,7 +262,7 @@ export default function Section2() {
                         src="dropdown.svg"
                         alt="icon"
                     />
-                    <Typography sx={ItemTextStyle}>E-commerce</Typography>
+                    <Typography sx={ItemTextStyle}>Social</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
                 <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
@@ -280,7 +286,7 @@ export default function Section2() {
                         src="dropdown.svg"
                         alt="icon"
                     />
-                    <Typography sx={ItemTextStyle}>E-commerce</Typography>
+                    <Typography sx={ItemTextStyle}>Calendar</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
                 <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
