@@ -52,6 +52,7 @@ export const ItemStyle = {
     // Hover & Click effect End
 };
 export const ItemTextStyle = {
+    fontFamily: "Inter",
     paddingLeft: "8px",
     fontWeight: "500",
     fontSize: "13px",
@@ -74,10 +75,42 @@ export const Section1HeaderStyle = {
 
 export default function Section2() {
     const [openEcommerce, setOpenEcommerce] = useState(false); // State to control dropdown
+    const [openCRM, setOpenCRM] = useState(false); // State to control dropdown
+    const [openProjectManagement, setOpenProjectManagement] = useState(false); // State to control dropdown
+    const [openBooking, setOpenBooking] = useState(false); // State to control dropdown
+    const [openKanban, setOpenKanban] = useState(false); // State to control dropdown
+    const [openChat, setOpenChat] = useState(false); // State to control dropdown
+    const [openEvent, setOpenEvent] = useState(false); // State to control dropdown
+    const [openSocial, setOpenSocial] = useState(false); // State to control dropdown
+    const [openCalendar, setOpenCalendar] = useState(false); // State to control dropdown
 
     // Toggle dropdown
-    const handleClick = () => {
+    const handleEcommerceClick = () => {
         setOpenEcommerce(!openEcommerce);
+    };
+    const handleEventClick = () => {
+        setOpenEvent(!openEvent);
+    };
+    const handleChatClick = () => {
+        setOpenChat(!openChat);
+    };
+    const handleProjectManagementClick = () => {
+        setOpenProjectManagement(!openProjectManagement);
+    };
+    const handleBookingClick = () => {
+        setOpenBooking(!openBooking);
+    };
+    const handleKanbanClick = () => {
+        setOpenKanban(!openKanban);
+    };
+    const handleSocialClick = () => {
+        setOpenSocial(!openSocial);
+    };
+    const handleCalendarClick = () => {
+        setOpenCalendar(!openCalendar);
+    };
+    const handleCRMClick = () => {
+        setOpenCRM(!openCRM);
     };
 
     return (
@@ -87,7 +120,7 @@ export default function Section2() {
                     <Typography sx={Section1HeaderStyle}>Apps</Typography>
                 </Box>
                 {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleClick}>
+                <Box sx={ItemStyle} onClick={handleEcommerceClick}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
@@ -110,8 +143,8 @@ export default function Section2() {
                         </Box>
                     </Stack>
                 </Collapse>
-                {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleClick}>
+                {/* CRM Button */}
+                <Box sx={ItemStyle} onClick={handleCRMClick}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
@@ -120,8 +153,8 @@ export default function Section2() {
                     />
                     <Typography sx={ItemTextStyle}>CRM</Typography>
                 </Box>
-                {/* E-commerce Dropdown Items */}
-                <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
+                {/* CRM Dropdown Items */}
+                <Collapse in={openCRM} timeout="auto" unmountOnExit>
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -135,17 +168,23 @@ export default function Section2() {
                     </Stack>
                 </Collapse>
                 {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleClick}>
+                <Box sx={ItemStyle} onClick={handleProjectManagementClick}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
                         src="dropdown.svg"
                         alt="icon"
                     />
-                    <Typography sx={ItemTextStyle}>Project Management</Typography>
+                    <Typography sx={ItemTextStyle}>
+                        Project Management
+                    </Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
-                <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
+                <Collapse
+                    in={openProjectManagement}
+                    timeout="auto"
+                    unmountOnExit
+                >
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -159,7 +198,7 @@ export default function Section2() {
                     </Stack>
                 </Collapse>
                 {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleClick}>
+                <Box sx={ItemStyle} onClick={handleBookingClick}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
@@ -169,7 +208,7 @@ export default function Section2() {
                     <Typography sx={ItemTextStyle}>Booking</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
-                <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
+                <Collapse in={openBooking} timeout="auto" unmountOnExit>
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -183,7 +222,7 @@ export default function Section2() {
                     </Stack>
                 </Collapse>
                 {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleClick}>
+                <Box sx={ItemStyle} onClick={handleKanbanClick}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
@@ -193,7 +232,7 @@ export default function Section2() {
                     <Typography sx={ItemTextStyle}>Kanban</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
-                <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
+                <Collapse in={openKanban} timeout="auto" unmountOnExit>
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -207,7 +246,7 @@ export default function Section2() {
                     </Stack>
                 </Collapse>
                 {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleClick}>
+                <Box sx={ItemStyle} onClick={handleChatClick}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
@@ -217,7 +256,7 @@ export default function Section2() {
                     <Typography sx={ItemTextStyle}>Chat</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
-                <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
+                <Collapse in={openChat} timeout="auto" unmountOnExit>
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -231,7 +270,7 @@ export default function Section2() {
                     </Stack>
                 </Collapse>
                 {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleClick}>
+                <Box sx={ItemStyle} onClick={handleEventClick}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
@@ -241,7 +280,7 @@ export default function Section2() {
                     <Typography sx={ItemTextStyle}>Event</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
-                <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
+                <Collapse in={openEvent} timeout="auto" unmountOnExit>
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -255,7 +294,7 @@ export default function Section2() {
                     </Stack>
                 </Collapse>
                 {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleClick}>
+                <Box sx={ItemStyle} onClick={handleSocialClick}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
@@ -265,7 +304,7 @@ export default function Section2() {
                     <Typography sx={ItemTextStyle}>Social</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
-                <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
+                <Collapse in={openSocial} timeout="auto" unmountOnExit>
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -279,7 +318,7 @@ export default function Section2() {
                     </Stack>
                 </Collapse>
                 {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleClick}>
+                <Box sx={ItemStyle} onClick={handleCalendarClick}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
@@ -289,7 +328,7 @@ export default function Section2() {
                     <Typography sx={ItemTextStyle}>Calendar</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
-                <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
+                <Collapse in={openCalendar} timeout="auto" unmountOnExit>
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>

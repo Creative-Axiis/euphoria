@@ -48,6 +48,8 @@ export const ItemStyle = {
     // Hover & Click effect End
 };
 export const ItemTextStyle = {
+    fontFamily: "Inter",
+    fontStyle: "medium",
     paddingLeft: "8px",
     fontWeight: "500",
     fontSize: "13px",
@@ -132,7 +134,9 @@ export default function Section1() {
                         alt="icon"
                     />
 
-                    <Typography sx={ItemTextStyle}>Project Management</Typography>
+                    <Typography sx={ItemTextStyle}>
+                        Project Management
+                    </Typography>
                 </Box>
                 <Box sx={ItemStyle}>
                     <Box

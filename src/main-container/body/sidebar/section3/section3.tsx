@@ -52,6 +52,7 @@ export const ItemStyle = {
     // Hover & Click effect End
 };
 export const ItemTextStyle = {
+    fontFamily: "Inter",
     paddingLeft: "8px",
     fontWeight: "500",
     fontSize: "13px",
