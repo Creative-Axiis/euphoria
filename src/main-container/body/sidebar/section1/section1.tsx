@@ -82,71 +82,71 @@ export default function Section1() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="analytics.svg"
+                        src="/icons/E-commerce.svg"
                         alt="icon"
                     />
 
-                    <Typography sx={ItemTextStyle}>Analytics</Typography>
+                    <Typography sx={ItemTextStyle}>E-commerce</Typography>
                 </Box>
                 <Box sx={ItemStyle}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="analytics.svg"
+                        src="/icons/Finance.svg"
                         alt="icon"
                     />
 
-                    <Typography sx={ItemTextStyle}>Analytics</Typography>
+                    <Typography sx={ItemTextStyle}>Finance</Typography>
                 </Box>
                 <Box sx={ItemStyle}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="analytics.svg"
+                        src="/icons/Stock-Market.svg"
                         alt="icon"
                     />
 
-                    <Typography sx={ItemTextStyle}>Analytics</Typography>
+                    <Typography sx={ItemTextStyle}>Stock Market</Typography>
                 </Box>
                 <Box sx={ItemStyle}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="analytics.svg"
+                        src="/icons/CRM.svg"
                         alt="icon"
                     />
 
-                    <Typography sx={ItemTextStyle}>Analytics</Typography>
+                    <Typography sx={ItemTextStyle}>CRM</Typography>
                 </Box>
                 <Box sx={ItemStyle}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="analytics.svg"
+                        src="/icons/Project-Management.svg"
                         alt="icon"
                     />
 
-                    <Typography sx={ItemTextStyle}>Analytics</Typography>
+                    <Typography sx={ItemTextStyle}>Project Management</Typography>
                 </Box>
                 <Box sx={ItemStyle}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="analytics.svg"
+                        src="/icons/Booking.svg"
                         alt="icon"
                     />
 
-                    <Typography sx={ItemTextStyle}>Analytics</Typography>
+                    <Typography sx={ItemTextStyle}>Booking</Typography>
                 </Box>
                 <Box sx={ItemStyle}>
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="analytics.svg"
+                        src="/icons/Crypto.svg"
                         alt="icon"
                     />
 
-                    <Typography sx={ItemTextStyle}>Analytics</Typography>
+                    <Typography sx={ItemTextStyle}>Crypto</Typography>
                 </Box>
             </Stack>
         </Box>
