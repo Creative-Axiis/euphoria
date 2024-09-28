@@ -33,7 +33,7 @@ export const IconStyles = {
     alignSelf: "center",
 };
 export const TextStyles = {
-    fontFamily: "Inter Display",
+    fontFamily: "Inter Display ",
     fontStyle: "normal",
     fontSize: "18.3857px",
     fontWeight: "700",
@@ -41,6 +41,7 @@ export const TextStyles = {
     paddingLeft: "4.09px",
     alignSelf: "left",
     lineHeight: "22px",
+
 };
 
 export default function Logo() {
