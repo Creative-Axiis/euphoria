@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import Chart from "./chart/chart";
+// import Chart from "./chart/chart";
 
 export const ContentContainerStyle = {
     height: "944px",
@@ -17,7 +17,7 @@ export const ContentContainerStyle = {
 export default function ContentContainer() {
     return (
         <Box sx={ContentContainerStyle}>
-            <Chart />
+            {/* <Chart /> */}
         </Box>
     );
 }
