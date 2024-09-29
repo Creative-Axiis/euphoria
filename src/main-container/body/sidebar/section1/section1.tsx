@@ -1,5 +1,6 @@
 import { Stack, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
+import { useState } from "react";
 
 export const Section1Style = {
     height: "fit-content",
@@ -70,92 +71,202 @@ export const Section1HeaderStyle = {
     color: "#7A7A7A",
 };
 export default function Section1() {
+    // Define state for which item is hovered
+    const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
+    // Icons for normal and hover (white version)
+    const icons = {
+        analytics: {
+            default: "/icons/analytics.svg",
+            white: "/icons/analytics_white.svg",
+        },
+        ecommerce: {
+            default: "/icons/E-commerce_dark.svg",
+            white: "/icons/E-commerce_white.svg",
+        },
+        finance: {
+            default: "/icons/Finance.svg",
+            white: "/icons/Finance_white.svg",
+        },
+        stockMarket: {
+            default: "/icons/Stock-Market.svg",
+            white: "/icons/Stock-Market_white.svg",
+        },
+        crm: {
+            default: "/icons/CRM.svg",
+            white: "/icons/CRM_white.svg",
+        },
+        projectManagement: {
+            default: "/icons/Project-Management.svg",
+            white: "/icons/Project-Management_white.svg",
+        },
+        booking: {
+            default: "/icons/Booking.svg",
+            white: "/icons/Booking_white.svg",
+        },
+        crypto: {
+            default: "/icons/Crypto.svg",
+            white: "/icons/Crypto_white.svg",
+        },
+    };
+
     return (
         <Box sx={Section1Style}>
             <Stack direction="column" spacing={0}>
                 <Box width={"200px"} height={"29px"}>
                     <Typography sx={Section1HeaderStyle}>Dashboard</Typography>
                 </Box>
-                <Box sx={ItemStyle}>
+                {/** Analytics */}
+                <Box
+                    sx={ItemStyle}
+                    onMouseEnter={() => setHoveredItem("analytics")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="analytics.svg"
+                        src={
+                            hoveredItem === "analytics"
+                                ? icons.analytics.white
+                                : icons.analytics.default
+                        }
                         alt="icon"
                     />
-
                     <Typography sx={ItemTextStyle}>Analytics</Typography>
                 </Box>
-                <Box sx={ItemStyle}>
+
+                {/** E-commerce */}
+                <Box
+                    sx={ItemStyle}
+                    onMouseEnter={() => setHoveredItem("ecommerce")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="/icons/E-commerce.svg"
+                        src={
+                            hoveredItem === "ecommerce"
+                                ? icons.ecommerce.white
+                                : icons.ecommerce.default
+                        }
                         alt="icon"
                     />
-
                     <Typography sx={ItemTextStyle}>E-commerce</Typography>
                 </Box>
-                <Box sx={ItemStyle}>
+
+                {/** Finance */}
+                <Box
+                    sx={ItemStyle}
+                    onMouseEnter={() => setHoveredItem("finance")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="/icons/Finance.svg"
+                        src={
+                            hoveredItem === "finance"
+                                ? icons.finance.white
+                                : icons.finance.default
+                        }
                         alt="icon"
                     />
-
                     <Typography sx={ItemTextStyle}>Finance</Typography>
                 </Box>
-                <Box sx={ItemStyle}>
+
+                {/** Stock Market */}
+                <Box
+                    sx={ItemStyle}
+                    onMouseEnter={() => setHoveredItem("stockMarket")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="/icons/Stock-Market.svg"
+                        src={
+                            hoveredItem === "stockMarket"
+                                ? icons.stockMarket.white
+                                : icons.stockMarket.default
+                        }
                         alt="icon"
                     />
-
                     <Typography sx={ItemTextStyle}>Stock Market</Typography>
                 </Box>
-                <Box sx={ItemStyle}>
+
+                {/** CRM */}
+                <Box
+                    sx={ItemStyle}
+                    onMouseEnter={() => setHoveredItem("crm")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="/icons/CRM.svg"
+                        src={
+                            hoveredItem === "crm"
+                                ? icons.crm.white
+                                : icons.crm.default
+                        }
                         alt="icon"
                     />
-
                     <Typography sx={ItemTextStyle}>CRM</Typography>
                 </Box>
-                <Box sx={ItemStyle}>
+
+                {/** Project Management */}
+                <Box
+                    sx={ItemStyle}
+                    onMouseEnter={() => setHoveredItem("projectManagement")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="/icons/Project-Management.svg"
+                        src={
+                            hoveredItem === "projectManagement"
+                                ? icons.projectManagement.white
+                                : icons.projectManagement.default
+                        }
                         alt="icon"
                     />
-
                     <Typography sx={ItemTextStyle}>
                         Project Management
                     </Typography>
                 </Box>
-                <Box sx={ItemStyle}>
+
+                {/** Booking */}
+                <Box
+                    sx={ItemStyle}
+                    onMouseEnter={() => setHoveredItem("booking")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="/icons/Booking.svg"
+                        src={
+                            hoveredItem === "booking"
+                                ? icons.booking.white
+                                : icons.booking.default
+                        }
                         alt="icon"
                     />
-
                     <Typography sx={ItemTextStyle}>Booking</Typography>
                 </Box>
-                <Box sx={ItemStyle}>
+
+                {/** Crypto */}
+                <Box
+                    sx={ItemStyle}
+                    onMouseEnter={() => setHoveredItem("crypto")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="/icons/Crypto.svg"
+                        src={
+                            hoveredItem === "crypto"
+                                ? icons.crypto.white
+                                : icons.crypto.default
+                        }
                         alt="icon"
                     />
-
                     <Typography sx={ItemTextStyle}>Crypto</Typography>
                 </Box>
             </Stack>

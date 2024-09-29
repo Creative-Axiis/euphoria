@@ -14,6 +14,7 @@ export const RightBarStyle = {
     alignment: "right",
     paddingTop: "16px",
     paddingBottom: "16px",
+    marginLeft: "auto", // Push RightBar to the far right
 };
 
 export const RightBarInnerStyle = {
@@ -112,8 +113,8 @@ export default function RightBar() {
                             component="img"
                             src="avatar.png"
                             alt="icon"
-                            width="32px"
-                            height="32px"
+                            width="37.6px"
+                            height="37.6px"
                             borderRadius="6.4px"
                         />
                     </IconButton>

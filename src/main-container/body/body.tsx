@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import SideBar from "./sidebar/sidebar";
 import ContentContainer from "./content-container/content-container";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const BodyStyle = {
     background: "#FFFFFF",
@@ -15,13 +16,19 @@ export const BodyStyle = {
     borderRadius: "30px 30px 0px 0px",
     // padding: "8px 24px 8px 24px",
     overflow: "hidden", // Add this to prevent overflow of child elements
-
 };
 
-export default function Body() {
+interface BodyProps {
+    sidebarOpen: boolean;
+}
+export default function Body({ sidebarOpen }: BodyProps) {
+    const isMobile = useMediaQuery("(max-width:1057px)");
+
     return (
         <Box sx={BodyStyle}>
-            <SideBar />
+            {/* Show SideBar based on screen size or sidebarOpen state */}
+            {!isMobile && <SideBar />}
+            {isMobile && sidebarOpen && <SideBar />} {/* For mobile screens */}
             <ContentContainer />
         </Box>
     );
