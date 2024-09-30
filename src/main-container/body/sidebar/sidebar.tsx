@@ -40,11 +40,12 @@ export const SidebarStyle = {
     height: "100vh", // Full height of the viewport
     width: "232px",
     position: "fixed", // Fix position to keep it on the screen
-    //top: 0, // Align it to the top of the viewport
+    top: 0, // Align it to the top of the viewport
     left: 0, // Align it to the left of the screen
     display: "flex",
     flexDirection: "column",
-    marginBottom: "180px",
+    // marginBottom: "180px",
+    marginTop: "80px",
     boxSizing: "border-box",
     padding: "32px 16px 100px 16px",
     backgroundColor: "#FAFAFA",
