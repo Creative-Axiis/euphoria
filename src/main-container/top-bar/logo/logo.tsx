@@ -50,7 +50,7 @@ export default function Logo() {
                 <Box
                     sx={IconStyles}
                     component="img"
-                    src="logo.png"
+                    src="/icons/topBar/logo.png"
                     alt="icon"
                 ></Box>
                 <Typography variant="subtitle1" sx={TextStyles}>

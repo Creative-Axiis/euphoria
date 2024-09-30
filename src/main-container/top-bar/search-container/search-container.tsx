@@ -68,7 +68,7 @@ export default function SearchContainer() {
                 <Icon sx={SearchIconStyles}>
                     <Box
                         component="img"
-                        src="search.png"
+                        src="/icons/topBar/search.png"
                         alt="icon"
                         width="13px"
                         height="13px"

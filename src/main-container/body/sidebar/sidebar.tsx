@@ -15,7 +15,8 @@ export const SidebarStyle = {
     padding: "32px 16px 32px 16px",
     alignment: "left",
     backgroundColor: "#FAFAFA",
-    // boarder : "1px solid #EAEAEA",
+    border: "1px solid #EAEAEA",
+    overflowY: "scroll", // Enable vertical scrolling
 };
 
 export default function SideBar() {

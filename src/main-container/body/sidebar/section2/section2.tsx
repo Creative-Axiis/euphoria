@@ -124,7 +124,7 @@ export default function Section2() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>E-commerce</Typography>
@@ -148,7 +148,7 @@ export default function Section2() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>CRM</Typography>
@@ -172,7 +172,7 @@ export default function Section2() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>
@@ -202,7 +202,7 @@ export default function Section2() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Booking</Typography>
@@ -226,7 +226,7 @@ export default function Section2() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Kanban</Typography>
@@ -250,7 +250,7 @@ export default function Section2() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Chat</Typography>
@@ -274,7 +274,7 @@ export default function Section2() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Event</Typography>
@@ -298,7 +298,7 @@ export default function Section2() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Social</Typography>
@@ -322,7 +322,7 @@ export default function Section2() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Calendar</Typography>

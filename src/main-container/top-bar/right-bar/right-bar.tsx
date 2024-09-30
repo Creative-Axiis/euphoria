@@ -47,7 +47,7 @@ export default function RightBar() {
                     <IconButton sx={RightIconButtonStyles}>
                         <Box
                             component="img"
-                            src="world.png"
+                            src="/icons/topBar/world.png"
                             alt="icon"
                             width="20px"
                             height="20px"
@@ -63,7 +63,7 @@ export default function RightBar() {
                     >
                         <Box
                             component="img"
-                            src="sun.png"
+                            src="/icons/topBar/sun.png"
                             alt="icon"
                             width="20px"
                             height="20px"
@@ -79,7 +79,7 @@ export default function RightBar() {
                     >
                         <Box
                             component="img"
-                            src="notification.png"
+                            src="/icons/topBar/notification.png"
                             alt="icon"
                             width="20px"
                             height="20px"
@@ -95,7 +95,7 @@ export default function RightBar() {
                     >
                         <Box
                             component="img"
-                            src="settings.png"
+                            src="/icons/topBar/settings.png"
                             alt="icon"
                             width="20px"
                             height="20px"
@@ -111,7 +111,7 @@ export default function RightBar() {
                     >
                         <Box
                             component="img"
-                            src="avatar.png"
+                            src="/icons/topBar/avatar.png"
                             alt="icon"
                             width="37.6px"
                             height="37.6px"

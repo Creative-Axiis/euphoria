@@ -77,36 +77,36 @@ export default function Section1() {
     // Icons for normal and hover (white version)
     const icons = {
         analytics: {
-            default: "/icons/analytics.svg",
-            white: "/icons/analytics_white.svg",
+            default: "/icons/sideBar/analytics.svg",
+            white: "/icons/sideBar/analytics_white.svg",
         },
         ecommerce: {
-            default: "/icons/E-commerce_dark.svg",
-            white: "/icons/E-commerce_white.svg",
+            default: "/icons/sideBar/E-commerce_dark.svg",
+            white: "/icons/sideBar/E-commerce_white.svg",
         },
         finance: {
-            default: "/icons/Finance.svg",
-            white: "/icons/Finance_white.svg",
+            default: "/icons/sideBar/Finance.svg",
+            white: "/icons/sideBar/Finance_white.svg",
         },
         stockMarket: {
-            default: "/icons/Stock-Market.svg",
-            white: "/icons/Stock-Market_white.svg",
+            default: "/icons/sideBar/Stock-Market.svg",
+            white: "/icons/sideBar/Stock-Market_white.svg",
         },
         crm: {
-            default: "/icons/CRM.svg",
-            white: "/icons/CRM_white.svg",
+            default: "/icons/sideBar/CRM.svg",
+            white: "/icons/sideBar/CRM_white.svg",
         },
         projectManagement: {
-            default: "/icons/Project-Management.svg",
-            white: "/icons/Project-Management_white.svg",
+            default: "/icons/sideBar/Project-Management.svg",
+            white: "/icons/sideBar/Project-Management_white.svg",
         },
         booking: {
-            default: "/icons/Booking.svg",
-            white: "/icons/Booking_white.svg",
+            default: "/icons/sideBar/Booking.svg",
+            white: "/icons/sideBar/Booking_white.svg",
         },
         crypto: {
-            default: "/icons/Crypto.svg",
-            white: "/icons/Crypto_white.svg",
+            default: "/icons/sideBar/Crypto.svg",
+            white: "/icons/sideBar/Crypto_white.svg",
         },
     };
 

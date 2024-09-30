@@ -104,7 +104,7 @@ export default function Section3() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Landing Pages</Typography>
@@ -128,7 +128,7 @@ export default function Section3() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Authentication</Typography>
@@ -152,7 +152,7 @@ export default function Section3() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Error</Typography>
@@ -176,7 +176,7 @@ export default function Section3() {
                     <Box
                         sx={ItemIconStyle}
                         component="img"
-                        src="dropdown.svg"
+                        src="/icons/sideBar/dropdown.svg"
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Pricing</Typography>
