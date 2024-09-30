@@ -12,7 +12,9 @@ export const ContentContainerStyle = {
     boxSizing: "border-box", // Include padding and border in element's width and height
     padding: "24px",
     alignment: "left",
+
 };
+
 
 export default function ContentContainer() {
     return (

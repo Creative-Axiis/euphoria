@@ -11,11 +11,12 @@ export const BodyStyle = {
     // position: "fixed",
     display: "flex",
     position: "relative", // Keep it relative to ensure scrolling
-    margin: 0, // Remove all margins
+    marginTop: "80px", // Remove all margins
     boxSizing: "border-box", // Include padding and border in element's width and height
     borderRadius: "30px 30px 0px 0px",
-    // padding: "8px 24px 8px 24px",
+    padding: "8px 24px 8px 24px",
     overflow: "hidden", // Add this to prevent overflow of child elements
+
 };
 
 interface BodyProps {

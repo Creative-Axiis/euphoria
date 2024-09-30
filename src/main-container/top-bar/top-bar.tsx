@@ -7,14 +7,27 @@ import MenuIcon from "@mui/icons-material/Menu";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CloseIcon from "@mui/icons-material/Close";
 
+// export const TopBarStyle = {
+//     background: "black",
+//     height: "80px",
+//     width: "100%", // need to use 1440px
+//     // backgroundColor: "white",
+//     position: "fixed",
+//     zIndex: 1000, // Add a high z-index to make sure it stays on top of other elements
+//     display: "flex",
+//     //position: "relative", // Keep it relative to ensure scrolling
+//     margin: 0, // Remove all margins
+//     boxSizing: "border-box", // Include padding and border in element's width and height
+//     padding: "8px 24px 8px 24px",
+// };
 export const TopBarStyle = {
     background: "black",
     height: "80px",
-    width: "100%", // need to use 1440px
-    // backgroundColor: "white",
-    // position: "fixed",
+    width: "100%", // or "1440px" if you want a fixed width
     display: "flex",
-    position: "relative", // Keep it relative to ensure scrolling
+    position: "fixed", // Change this to fixed to keep it in place while scrolling
+    top: 0, // Ensure it's at the top of the viewport
+    zIndex: 1000, // Add a high z-index to make sure it stays on top of other elements
     margin: 0, // Remove all margins
     boxSizing: "border-box", // Include padding and border in element's width and height
     padding: "8px 24px 8px 24px",
