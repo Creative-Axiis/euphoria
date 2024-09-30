@@ -74,43 +74,20 @@ export const Section1HeaderStyle = {
 };
 
 export default function Section2() {
-    const [openEcommerce, setOpenEcommerce] = useState(false); // State to control dropdown
-    const [openCRM, setOpenCRM] = useState(false); // State to control dropdown
-    const [openProjectManagement, setOpenProjectManagement] = useState(false); // State to control dropdown
-    const [openBooking, setOpenBooking] = useState(false); // State to control dropdown
-    const [openKanban, setOpenKanban] = useState(false); // State to control dropdown
-    const [openChat, setOpenChat] = useState(false); // State to control dropdown
-    const [openEvent, setOpenEvent] = useState(false); // State to control dropdown
-    const [openSocial, setOpenSocial] = useState(false); // State to control dropdown
-    const [openCalendar, setOpenCalendar] = useState(false); // State to control dropdown
+    const [openSection, setOpenSection] = useState<string | null>(null); // Tracks which section is open
+    const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
-    // Toggle dropdown
-    const handleEcommerceClick = () => {
-        setOpenEcommerce(!openEcommerce);
+    // Toggle specific section dropdown
+    const handleClick = (section: string) => {
+        setOpenSection(openSection === section ? null : section);
     };
-    const handleEventClick = () => {
-        setOpenEvent(!openEvent);
-    };
-    const handleChatClick = () => {
-        setOpenChat(!openChat);
-    };
-    const handleProjectManagementClick = () => {
-        setOpenProjectManagement(!openProjectManagement);
-    };
-    const handleBookingClick = () => {
-        setOpenBooking(!openBooking);
-    };
-    const handleKanbanClick = () => {
-        setOpenKanban(!openKanban);
-    };
-    const handleSocialClick = () => {
-        setOpenSocial(!openSocial);
-    };
-    const handleCalendarClick = () => {
-        setOpenCalendar(!openCalendar);
-    };
-    const handleCRMClick = () => {
-        setOpenCRM(!openCRM);
+
+    // Icons for normal and hover (white version)
+    const icons = {
+        dropdown: {
+            default: "/icons/sideBar/dropdown.svg",
+            white: "/icons/sideBar/dropdown_white.svg",
+        },
     };
 
     return (
@@ -119,69 +96,36 @@ export default function Section2() {
                 <Box width={"200px"} height={"29px"}>
                     <Typography sx={Section1HeaderStyle}>Apps</Typography>
                 </Box>
+
                 {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleEcommerceClick}>
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("ecommerce")}
+                    onMouseEnter={() => setHoveredItem("ecommerce")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
-                        sx={ItemIconStyle}
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "ecommerce"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
                         component="img"
-                        src="/icons/sideBar/dropdown.svg"
+                        src={
+                            hoveredItem === "ecommerce"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>E-commerce</Typography>
                 </Box>
                 {/* E-commerce Dropdown Items */}
-                <Collapse in={openEcommerce} timeout="auto" unmountOnExit>
-                    <Stack direction="column" spacing={0}>
-                        <Box sx={ItemStyle}>
-                            <Typography sx={ItemTextStyle}>Test 1</Typography>
-                        </Box>
-                        <Box sx={ItemStyle}>
-                            <Typography sx={ItemTextStyle}>Test 2</Typography>
-                        </Box>
-                        <Box sx={ItemStyle}>
-                            <Typography sx={ItemTextStyle}>Test 3</Typography>
-                        </Box>
-                    </Stack>
-                </Collapse>
-                {/* CRM Button */}
-                <Box sx={ItemStyle} onClick={handleCRMClick}>
-                    <Box
-                        sx={ItemIconStyle}
-                        component="img"
-                        src="/icons/sideBar/dropdown.svg"
-                        alt="icon"
-                    />
-                    <Typography sx={ItemTextStyle}>CRM</Typography>
-                </Box>
-                {/* CRM Dropdown Items */}
-                <Collapse in={openCRM} timeout="auto" unmountOnExit>
-                    <Stack direction="column" spacing={0}>
-                        <Box sx={ItemStyle}>
-                            <Typography sx={ItemTextStyle}>Test 1</Typography>
-                        </Box>
-                        <Box sx={ItemStyle}>
-                            <Typography sx={ItemTextStyle}>Test 2</Typography>
-                        </Box>
-                        <Box sx={ItemStyle}>
-                            <Typography sx={ItemTextStyle}>Test 3</Typography>
-                        </Box>
-                    </Stack>
-                </Collapse>
-                {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleProjectManagementClick}>
-                    <Box
-                        sx={ItemIconStyle}
-                        component="img"
-                        src="/icons/sideBar/dropdown.svg"
-                        alt="icon"
-                    />
-                    <Typography sx={ItemTextStyle}>
-                        Project Management
-                    </Typography>
-                </Box>
-                {/* E-commerce Dropdown Items */}
                 <Collapse
-                    in={openProjectManagement}
+                    in={openSection === "ecommerce"}
                     timeout="auto"
                     unmountOnExit
                 >
@@ -197,18 +141,129 @@ export default function Section2() {
                         </Box>
                     </Stack>
                 </Collapse>
-                {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleBookingClick}>
+
+                {/* CRM Button */}
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("crm")}
+                    onMouseEnter={() => setHoveredItem("crm")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
-                        sx={ItemIconStyle}
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "crm"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
                         component="img"
-                        src="/icons/sideBar/dropdown.svg"
+                        src={
+                            hoveredItem === "crm"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
+                        alt="icon"
+                    />
+                    <Typography sx={ItemTextStyle}>CRM</Typography>
+                </Box>
+                {/* CRM Dropdown Items */}
+                <Collapse
+                    in={openSection === "crm"}
+                    timeout="auto"
+                    unmountOnExit
+                >
+                    <Stack direction="column" spacing={0}>
+                        <Box sx={ItemStyle}>
+                            <Typography sx={ItemTextStyle}>Test 1</Typography>
+                        </Box>
+                        <Box sx={ItemStyle}>
+                            <Typography sx={ItemTextStyle}>Test 2</Typography>
+                        </Box>
+                        <Box sx={ItemStyle}>
+                            <Typography sx={ItemTextStyle}>Test 3</Typography>
+                        </Box>
+                    </Stack>
+                </Collapse>
+                {/* Project Management Button */}
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("project_management")}
+                    onMouseEnter={() => setHoveredItem("project_management")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
+                    <Box
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "project_management"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
+                        component="img"
+                        src={
+                            hoveredItem === "project_management"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
+                        alt="icon"
+                    />
+                    <Typography sx={ItemTextStyle}>
+                        Project Management
+                    </Typography>
+                </Box>
+                {/* Project Management Dropdown Items */}
+                <Collapse
+                    in={openSection === "project_management"}
+                    timeout="auto"
+                    unmountOnExit
+                >
+                    <Stack direction="column" spacing={0}>
+                        <Box sx={ItemStyle}>
+                            <Typography sx={ItemTextStyle}>Test 1</Typography>
+                        </Box>
+                        <Box sx={ItemStyle}>
+                            <Typography sx={ItemTextStyle}>Test 2</Typography>
+                        </Box>
+                        <Box sx={ItemStyle}>
+                            <Typography sx={ItemTextStyle}>Test 3</Typography>
+                        </Box>
+                    </Stack>
+                </Collapse>
+                {/* Booking Button */}
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("booking")}
+                    onMouseEnter={() => setHoveredItem("booking")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
+                    <Box
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "booking"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
+                        component="img"
+                        src={
+                            hoveredItem === "booking"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Booking</Typography>
                 </Box>
-                {/* E-commerce Dropdown Items */}
-                <Collapse in={openBooking} timeout="auto" unmountOnExit>
+                {/* Booking Dropdown Items */}
+                <Collapse
+                    in={openSection === "booking"}
+                    timeout="auto"
+                    unmountOnExit
+                >
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -221,18 +276,38 @@ export default function Section2() {
                         </Box>
                     </Stack>
                 </Collapse>
-                {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleKanbanClick}>
+                {/* Kanban Button */}
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("kanban")}
+                    onMouseEnter={() => setHoveredItem("kanban")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
-                        sx={ItemIconStyle}
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "kanban"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
                         component="img"
-                        src="/icons/sideBar/dropdown.svg"
+                        src={
+                            hoveredItem === "kanban"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Kanban</Typography>
                 </Box>
-                {/* E-commerce Dropdown Items */}
-                <Collapse in={openKanban} timeout="auto" unmountOnExit>
+                {/* Kanban Dropdown Items */}
+                <Collapse
+                    in={openSection === "kanban"}
+                    timeout="auto"
+                    unmountOnExit
+                >
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -245,18 +320,38 @@ export default function Section2() {
                         </Box>
                     </Stack>
                 </Collapse>
-                {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleChatClick}>
+                {/* Chat Button */}
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("chat")}
+                    onMouseEnter={() => setHoveredItem("chat")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
-                        sx={ItemIconStyle}
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "chat"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
                         component="img"
-                        src="/icons/sideBar/dropdown.svg"
+                        src={
+                            hoveredItem === "chat"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Chat</Typography>
                 </Box>
-                {/* E-commerce Dropdown Items */}
-                <Collapse in={openChat} timeout="auto" unmountOnExit>
+                {/* Chat Dropdown Items */}
+                <Collapse
+                    in={openSection === "chat"}
+                    timeout="auto"
+                    unmountOnExit
+                >
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -269,18 +364,38 @@ export default function Section2() {
                         </Box>
                     </Stack>
                 </Collapse>
-                {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleEventClick}>
+                {/* event Button */}
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("event")}
+                    onMouseEnter={() => setHoveredItem("event")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
-                        sx={ItemIconStyle}
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "event"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
                         component="img"
-                        src="/icons/sideBar/dropdown.svg"
+                        src={
+                            hoveredItem === "event"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Event</Typography>
                 </Box>
-                {/* E-commerce Dropdown Items */}
-                <Collapse in={openEvent} timeout="auto" unmountOnExit>
+                {/* event Dropdown Items */}
+                <Collapse
+                    in={openSection === "event"}
+                    timeout="auto"
+                    unmountOnExit
+                >
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -293,18 +408,38 @@ export default function Section2() {
                         </Box>
                     </Stack>
                 </Collapse>
-                {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleSocialClick}>
+                {/* social Button */}
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("social")}
+                    onMouseEnter={() => setHoveredItem("social")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
-                        sx={ItemIconStyle}
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "social"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
                         component="img"
-                        src="/icons/sideBar/dropdown.svg"
+                        src={
+                            hoveredItem === "social"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Social</Typography>
                 </Box>
-                {/* E-commerce Dropdown Items */}
-                <Collapse in={openSocial} timeout="auto" unmountOnExit>
+                {/* social Dropdown Items */}
+                <Collapse
+                    in={openSection === "social"}
+                    timeout="auto"
+                    unmountOnExit
+                >
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -317,18 +452,38 @@ export default function Section2() {
                         </Box>
                     </Stack>
                 </Collapse>
-                {/* E-commerce Button */}
-                <Box sx={ItemStyle} onClick={handleCalendarClick}>
+                {/* calendar Button */}
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("calendar")}
+                    onMouseEnter={() => setHoveredItem("calendar")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
-                        sx={ItemIconStyle}
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "calendar"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
                         component="img"
-                        src="/icons/sideBar/dropdown.svg"
+                        src={
+                            hoveredItem === "calendar"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Calendar</Typography>
                 </Box>
-                {/* E-commerce Dropdown Items */}
-                <Collapse in={openCalendar} timeout="auto" unmountOnExit>
+                {/* calendar Dropdown Items */}
+                <Collapse
+                    in={openSection === "calendar"}
+                    timeout="auto"
+                    unmountOnExit
+                >
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>

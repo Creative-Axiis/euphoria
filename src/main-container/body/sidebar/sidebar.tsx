@@ -54,6 +54,20 @@ export const SidebarStyle = {
     zIndex: 1000, // Ensure it's above other content
     borderRadius: "30px 0px 0px 0px",
 
+    // Custom scrollbar for WebKit browsers (Chrome, Safari)
+    "&::-webkit-scrollbar": {
+        width: "4px", // Width of the scrollbar
+    },
+    "&::-webkit-scrollbar-thumb": {
+        backgroundColor: "#888", // Scrollbar thumb color
+        borderRadius: "10px", // Make the scrollbar rounded
+    },
+    "&::-webkit-scrollbar-thumb:hover": {
+        backgroundColor: "#555", // Thumb color on hover
+    },
+    "&::-webkit-scrollbar-track": {
+        backgroundColor: "#f1f1f1", // Scrollbar track background
+    },
 };
 
 export default function SideBar() {

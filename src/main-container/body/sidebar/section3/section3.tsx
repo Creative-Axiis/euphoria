@@ -74,23 +74,20 @@ export const Section1HeaderStyle = {
 };
 
 export default function Section3() {
-    const [openError, setOpenError] = useState(false); // State to control dropdown
-    const [openAuthentication, setOpenAuthentication] = useState(false); // State to control dropdown
-    const [openLandingPages, setOpenLandingPages] = useState(false); // State to control dropdown
-    const [openPricing, setOpenPricing] = useState(false); // State to control dropdown
+    const [openSection, setOpenSection] = useState<string | null>(null); // Tracks which section is open
+    const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
-    // Toggle dropdown
-    const handlePricingClick = () => {
-        setOpenPricing(!openPricing);
+    // Toggle specific section dropdown
+    const handleClick = (section: string) => {
+        setOpenSection(openSection === section ? null : section);
     };
-    const handleAuthenticationClick = () => {
-        setOpenAuthentication(!openAuthentication);
-    };
-    const handleLandingPagesClick = () => {
-        setOpenLandingPages(!openLandingPages);
-    };
-    const handleErrorClick = () => {
-        setOpenError(!openError);
+
+    // Icons for normal and hover (white version)
+    const icons = {
+        dropdown: {
+            default: "/icons/sideBar/dropdown.svg",
+            white: "/icons/sideBar/dropdown_white.svg",
+        },
     };
 
     return (
@@ -99,18 +96,38 @@ export default function Section3() {
                 <Box width={"200px"} height={"29px"}>
                     <Typography sx={Section1HeaderStyle}>Pages</Typography>
                 </Box>
-                {/* Landing Pages Button */}
-                <Box sx={ItemStyle} onClick={handleLandingPagesClick}>
+                {/*landing page Button */}
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("landing_page")}
+                    onMouseEnter={() => setHoveredItem("landing_page")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
-                        sx={ItemIconStyle}
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "landing_page"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
                         component="img"
-                        src="/icons/sideBar/dropdown.svg"
+                        src={
+                            hoveredItem === "landing_page"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
                         alt="icon"
                     />
-                    <Typography sx={ItemTextStyle}>Landing Pages</Typography>
+                    <Typography sx={ItemTextStyle}>Landing Page</Typography>
                 </Box>
-                {/* Landing Pages Dropdown Items */}
-                <Collapse in={openLandingPages} timeout="auto" unmountOnExit>
+                {/* Landing Page Dropdown Items */}
+                <Collapse
+                    in={openSection === "landing_page"}
+                    timeout="auto"
+                    unmountOnExit
+                >
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -124,17 +141,37 @@ export default function Section3() {
                     </Stack>
                 </Collapse>
                 {/* Authentication Button */}
-                <Box sx={ItemStyle} onClick={handleAuthenticationClick}>
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("authentication")}
+                    onMouseEnter={() => setHoveredItem("authentication")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
-                        sx={ItemIconStyle}
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "authentication"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
                         component="img"
-                        src="/icons/sideBar/dropdown.svg"
+                        src={
+                            hoveredItem === "authentication"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Authentication</Typography>
                 </Box>
                 {/* Authentication Dropdown Items */}
-                <Collapse in={openAuthentication} timeout="auto" unmountOnExit>
+                <Collapse
+                    in={openSection === "authentication"}
+                    timeout="auto"
+                    unmountOnExit
+                >
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -148,17 +185,37 @@ export default function Section3() {
                     </Stack>
                 </Collapse>
                 {/* Error Button */}
-                <Box sx={ItemStyle} onClick={handleErrorClick}>
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("error")}
+                    onMouseEnter={() => setHoveredItem("error")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
-                        sx={ItemIconStyle}
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "error"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
                         component="img"
-                        src="/icons/sideBar/dropdown.svg"
+                        src={
+                            hoveredItem === "error"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Error</Typography>
                 </Box>
                 {/* Error Dropdown Items */}
-                <Collapse in={openError} timeout="auto" unmountOnExit>
+                <Collapse
+                    in={openSection === "error"}
+                    timeout="auto"
+                    unmountOnExit
+                >
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
@@ -172,17 +229,37 @@ export default function Section3() {
                     </Stack>
                 </Collapse>
                 {/* Pricing Button */}
-                <Box sx={ItemStyle} onClick={handlePricingClick}>
+                <Box
+                    sx={ItemStyle}
+                    onClick={() => handleClick("pricing")}
+                    onMouseEnter={() => setHoveredItem("pricing")}
+                    onMouseLeave={() => setHoveredItem(null)}
+                >
                     <Box
-                        sx={ItemIconStyle}
+                        sx={{
+                            ...ItemIconStyle,
+                            transform:
+                                openSection === "pricing"
+                                    ? "rotate(90deg)"
+                                    : "rotate(0deg)",
+                            transition: "transform 0.3s",
+                        }}
                         component="img"
-                        src="/icons/sideBar/dropdown.svg"
+                        src={
+                            hoveredItem === "pricing"
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
                         alt="icon"
                     />
                     <Typography sx={ItemTextStyle}>Pricing</Typography>
                 </Box>
                 {/* Pricing Dropdown Items */}
-                <Collapse in={openPricing} timeout="auto" unmountOnExit>
+                <Collapse
+                    in={openSection === "pricing"}
+                    timeout="auto"
+                    unmountOnExit
+                >
                     <Stack direction="column" spacing={0}>
                         <Box sx={ItemStyle}>
                             <Typography sx={ItemTextStyle}>Test 1</Typography>
