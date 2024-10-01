@@ -11,7 +11,7 @@ export const ContentContainerStyle = {
     position: "relative", // Keep it relative to ensure scrolling
     // marginLeft: "232px", // Remove all margins
     boxSizing: "border-box", // Include padding and border in element's width and height
-    padding: "24px 24px 100px 24px",
+    padding: "24px 24px 200px 24px",
     alignment: "left",
     overflowY: "auto", // Enable vertical scrolling
     zIndex: 999, // Ensure it's above other content

@@ -68,7 +68,7 @@ export const Section1HeaderStyle = {
     fontSize: "11px",
     lineHeight: "13.31px",
     letterSpacing: "-0.01em",
-    color: "#7A7A7A",
+    color: "#A1A1A1",
 };
 export default function Section1() {
     // Define state for which item is hovered

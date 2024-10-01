@@ -35,10 +35,12 @@ import Section1 from "./section1/section1";
 import Section2 from "./section2/section2";
 import Section3 from "./section3/section3";
 import { Stack } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 
 export const SidebarStyle = {
     height: "100vh", // Full height of the viewport
-    width: "232px",
+    // width: "232px",
     position: "fixed", // Fix position to keep it on the screen
     top: 0, // Align it to the top of the viewport
     left: 0, // Align it to the left of the screen
@@ -47,7 +49,7 @@ export const SidebarStyle = {
     // marginBottom: "180px",
     marginTop: "80px",
     boxSizing: "border-box",
-    padding: "32px 16px 100px 16px",
+    padding: "32px 16px 200px 16px",
     backgroundColor: "#FAFAFA",
     border: "1px solid #EAEAEA",
     overflowY: "auto", // Enable vertical scrolling
@@ -71,8 +73,9 @@ export const SidebarStyle = {
 };
 
 export default function SideBar() {
+    const isMobile = useMediaQuery("(max-width:1057px)");
     return (
-        <Box sx={SidebarStyle}>
+        <Box width={isMobile ? "100%" : "232px"} sx={SidebarStyle}>
             <Stack direction="column" spacing={0}>
                 <Section1 />
                 <Section2 />
