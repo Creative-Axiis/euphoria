@@ -54,7 +54,7 @@ export const SidebarStyle = {
     border: "1px solid #EAEAEA",
     overflowY: "auto", // Enable vertical scrolling
     zIndex: 1000, // Ensure it's above other content
-    borderRadius: "30px 0px 0px 0px",
+    //borderRadius: "30px 0px 0px 0px",
 
     // Custom scrollbar for WebKit browsers (Chrome, Safari)
     "&::-webkit-scrollbar": {
@@ -75,7 +75,8 @@ export const SidebarStyle = {
 export default function SideBar() {
     const isMobile = useMediaQuery("(max-width:1057px)");
     return (
-        <Box width={isMobile ? "100%" : "232px"} sx={SidebarStyle}>
+        <Box borderRadius={isMobile ? "30px 30px 0px 0px" : "30px 0px 0px 0px"} width={isMobile ? "100%" : "232px"} sx={SidebarStyle}>
+
             <Stack direction="column" spacing={0}>
                 <Section1 />
                 <Section2 />
