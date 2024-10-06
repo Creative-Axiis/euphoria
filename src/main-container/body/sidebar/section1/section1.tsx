@@ -31,7 +31,7 @@ export const ItemStyle = {
     borderRadius: "8px", // Rounded corners
     transition: "background-color 0.3s, transform 0.1s, box-shadow 0.3s", // Smooth transition with shadow effect
     "&:hover": {
-        backgroundColor: "#5654D4", // Light background on hover
+        backgroundColor: "primary.main", // Light background on hover
         cursor: "pointer", // Pointer cursor on hover
         boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", // Subtle shadow on hover
         "& .MuiTypography-root": {
@@ -49,7 +49,7 @@ export const ItemStyle = {
     // Hover & Click effect End
 };
 export const ItemTextStyle = {
-    fontFamily: "Inter",
+    // fontFamily: "Inter",
     fontStyle: "medium",
     paddingLeft: "8px",
     fontWeight: "500",

@@ -33,7 +33,7 @@ export const IconStyles = {
     alignSelf: "center",
 };
 export const TextStyles = {
-    fontFamily: "Inter",
+    // fontFamily: "Inter",
     fontStyle: "normal",
     fontSize: "18.3857px",
     fontWeight: "700",
@@ -53,7 +53,7 @@ export default function Logo() {
                     src="/icons/topBar/logo.png"
                     alt="icon"
                 ></Box>
-                <Typography variant="subtitle1" sx={TextStyles}>
+                <Typography  sx={TextStyles}>
                     Euphoria
                 </Typography>
             </Box>
