@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
-import Chart from "./chart";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import Char from "./chart";
 
 export const ContentContainerStyle = {
     height: "100vh",
@@ -41,7 +41,7 @@ export default function ContentContainer() {
     };
     return (
         <Box sx={containerStyle}>
-            <Chart />
+            <Char />
         </Box>
     );
 }
