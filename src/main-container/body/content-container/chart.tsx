@@ -1,208 +1,169 @@
-// import Box from "@mui/material/Box";
-
-// export const ChartStyle = {
-//     height: "261.48px",
-//     width: "331.2px", // need to use 1440px
-//     // backgroundColor: "blue",
-//     // position: "fixed",
-//     display: "flex",
-//     position: "relative", // Keep it relative to ensure scrolling
-//     margin: 0, // Remove all margins
-//     boxSizing: "border-box", // Include padding and border in element's width and height
-//     // padding: "24px",
-//     // alignment: "left",
-// };
-
-// export default function Chart() {
-//     return (
-//         <Box
-//             sx={{
-//                 ...ChartStyle,
-//                 borderRadius: "14.94px",
-//                 border: "0.62px solid #EFEFEF",
-
-//                 boxShadow:
-//                     "0px 0.62px 1.87px #00000005, 0px 3.74px 6.23px #b1b1b114",
-//             }}
-//         ></Box>
-//     );
-// }
-
-// ===============================================================================
-// ===============================================================================
-// ===============================================================================
-// ===============================================================================
-// ===============================================================================
-
-"use client";
-
-import React from "react";
-import { Box, Typography, IconButton } from "@mui/material";
+// Chart.tsx
+import React, { useEffect } from 'react';
+import * as echarts from 'echarts/core';
 import {
-    BarChart,
-    Bar,
-    XAxis,
-    CartesianGrid,
-    ResponsiveContainer,
-} from "recharts";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+  TooltipComponent,
+  TooltipComponentOption,
+  GridComponent,
+  GridComponentOption
+} from 'echarts/components';
+import {
+  BarChart,
+  BarSeriesOption,
+  LineChart,
+  LineSeriesOption
+} from 'echarts/charts';
+import { UniversalTransition } from 'echarts/features';
+import { CanvasRenderer } from 'echarts/renderers';
 
-const data = [
-    { name: "Jan", value: 2000 },
-    { name: "Feb", value: 15000 },
-    { name: "Mar", value: 7000 },
-    { name: "Apr", value: 20000 },
-    { name: "May", value: 16000 },
-    { name: "Jun", value: 18000 },
-    { name: "Jul", value: 12000 },
-];
+echarts.use([
+  TooltipComponent,
+  GridComponent,
+  BarChart,
+  LineChart,
+  CanvasRenderer,
+  UniversalTransition
+]);
 
-export default function Chart() {
-    return (
-        <Box
-            sx={{
-                width: "331.2px",
-                height: "2000px",
-                bgcolor: "background.paper",
-                borderRadius: "14.94px",
-                border: "0.62px solid #EFEFEF",
-                boxShadow:
-                    "0px 0.62px 1.87px #00000005, 0px 3.74px 6.23px #b1b1b114",
-                padding: "16px",
-                display: "flex",
-                flexDirection: "column",
-            }}
-        >
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "flex-start",
-                    mb: 1,
-                }}
-            >
-                <Box>
-                    <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 0.5 }}
-                    >
-                        <Typography
-                            variant="subtitle2"
-                            sx={{ fontWeight: 600, color: "text.secondary" }}
-                        >
-                            Balance
-                        </Typography>
-                        <InfoOutlinedIcon
-                            sx={{ fontSize: 14, color: "text.disabled" }}
-                        />
-                    </Box>
-                    <Typography variant="h5" sx={{ fontWeight: 700, mt: 0.5 }}>
-                        $20,245
-                    </Typography>
-                    <Box
-                        sx={{ display: "flex", alignItems: "center", mt: 0.5 }}
-                    >
-                        <ArrowUpwardIcon
-                            sx={{ fontSize: 12, color: "success.main" }}
-                        />
-                        <Typography
-                            variant="caption"
-                            sx={{ color: "success.main", fontWeight: 500 }}
-                        >
-                            12% vs last years
-                        </Typography>
-                    </Box>
-                </Box>
-                <IconButton size="small" sx={{ mt: -1, mr: -1 }}>
-                    <MoreHorizIcon fontSize="small" />
-                </IconButton>
-            </Box>
-            <Box sx={{ flexGrow: 1, mt: 1 }}>
-                <ResponsiveContainer width="100%" height="100%">
-                    <BarChart
-                        data={data}
-                        margin={{ top: 10, right: 0, left: 0, bottom: 0 }}
-                    >
-                        <CartesianGrid
-                            strokeDasharray="3 3"
-                            vertical={false}
-                            stroke="#f0f0f0"
-                        />
-                        <XAxis
-                            dataKey="name"
-                            axisLine={false}
-                            tickLine={false}
-                            tick={{ fontSize: 10, fill: "#888" }}
-                            tickMargin={8}
-                        />
-                        <Bar
-                            dataKey="value"
-                            radius={[4, 4, 0, 0]}
-                            barSize={26}
-                            shape={(props: {
-                                name?: any;
-                                x?: any;
-                                y?: any;
-                                width?: any;
-                                height?: any;
-                            }) => {
-                                const { x, y, width, height } = props;
-                                return (
-                                    <g>
-                                        <defs>
-                                            <linearGradient
-                                                id="barGradient"
-                                                x1="0"
-                                                y1="0"
-                                                x2="0"
-                                                y2="1"
-                                            >
-                                                <stop
-                                                    offset="0%"
-                                                    stopColor="#E2E8FF"
-                                                />
-                                                <stop
-                                                    offset="100%"
-                                                    stopColor="#F3F5FF"
-                                                />
-                                            </linearGradient>
-                                            <linearGradient
-                                                id="activeBarGradient"
-                                                x1="0"
-                                                y1="0"
-                                                x2="0"
-                                                y2="1"
-                                            >
-                                                <stop
-                                                    offset="0%"
-                                                    stopColor="#849FFF"
-                                                />
-                                                <stop
-                                                    offset="100%"
-                                                    stopColor="#5E7BF6"
-                                                />
-                                            </linearGradient>
-                                        </defs>
-                                        <rect
-                                            x={x}
-                                            y={y}
-                                            width={width}
-                                            height={height}
-                                            fill={
-                                                props.name === "Jun"
-                                                    ? "url(#activeBarGradient)"
-                                                    : "url(#barGradient)"
-                                            }
-                                            rx={4}
-                                        />
-                                    </g>
-                                );
-                            }}
-                        />
-                    </BarChart>
-                </ResponsiveContainer>
-            </Box>
-        </Box>
-    );
-}
+type EChartsOption = echarts.ComposeOption<
+  | TooltipComponentOption
+  | GridComponentOption
+  | BarSeriesOption
+  | LineSeriesOption
+>;
+
+const Chart = () => {
+  useEffect(() => {
+    const chartDom = document.getElementById('main')!;
+    const myChart = echarts.init(chartDom);
+
+    // Sample data
+    const evaporationData = [
+      34, 54, 74, 150, 91, 74, 98, 74, 133, 74, 54, 98
+    ];
+    const temperatureData = [
+      34, 54, 74, 150, 91, 74, 98, 74, 133, 74, 54, 98
+    ];
+
+    // Calculate dynamic max values for y-axes
+    const maxEvaporation = Math.max(...evaporationData);
+    const yAxisMaxBar = maxEvaporation * 1.2; // Add 20% padding for the bar chart
+
+    const maxTemperature = Math.max(...temperatureData);
+    const yAxisMaxLine = maxTemperature * 1.2; // Add 20% padding for the line chart
+
+    const option: EChartsOption = {
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'cross',
+          crossStyle: {
+            color: '#999'
+          }
+        }
+      },
+      xAxis: [
+        {
+          type: 'category',
+          data: [
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+          ],
+          axisPointer: {
+            type: 'shadow'
+          },
+          axisLine: {
+            show: true,
+            lineStyle: {
+              color: '#E9E9E9',
+              width: 2
+            }
+          },
+          axisTick: {
+            show: false
+          },
+          axisLabel: {
+            show: true,
+            color: '#7C818A',
+            margin: 20
+          }
+        }
+      ],
+      yAxis: [
+        {
+          type: 'value',
+          min: 0,
+          max: yAxisMaxBar, // Dynamic max value for relative height scaling of bar chart
+          interval: yAxisMaxBar / 5, // Divide y-axis into 5 intervals
+          axisLabel: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        },
+        {
+          type: 'value',
+          min: 0,
+          max: yAxisMaxLine, // Dynamic max value for relative height scaling of line chart
+          interval: yAxisMaxLine / 5, // Divide y-axis into 5 intervals
+          axisLabel: {
+            show: false
+          },
+          splitLine: {
+            show: false
+          }
+        }
+      ],
+      grid: {
+        top: '20px',
+        left: '10%',
+        right: '10%',
+        height: '133px', // Set grid height to 133px
+      },
+      series: [
+        {
+          name: 'Evaporation',
+          type: 'bar',
+          tooltip: {
+            valueFormatter: (value) => `${value} ml`
+          },
+          barWidth: 46.75,
+          barGap: '24%',
+          itemStyle: {
+            borderRadius: [5, 5, 5, 5]
+          },
+          data: evaporationData
+        },
+        {
+          name: 'Temperature',
+          type: 'line',
+          yAxisIndex: 1,
+          tooltip: {
+            valueFormatter: (value) => `${value} °C`
+          },
+          lineStyle: {
+            color: '#5654D4',
+            width: 2
+          },
+          itemStyle: {
+            color: '#5654D4'
+          },
+          symbol: 'circle',
+          symbolSize: 8,
+          data: temperatureData
+        }
+      ]
+    };
+
+    myChart.setOption(option);
+
+    return () => {
+      myChart.dispose();
+    };
+  }, []);
+
+  return <div id="main" style={{ height: '100%', width: '100%' }}></div>;
+};
+
+export default Chart;
