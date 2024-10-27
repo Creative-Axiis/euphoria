@@ -1,38 +1,4 @@
-// import Box from "@mui/material/Box";
 
-// export const ChartStyle = {
-//     height: "261.48px",
-//     width: "331.2px", // need to use 1440px
-//     // backgroundColor: "blue",
-//     // position: "fixed",
-//     display: "flex",
-//     position: "relative", // Keep it relative to ensure scrolling
-//     margin: 0, // Remove all margins
-//     boxSizing: "border-box", // Include padding and border in element's width and height
-//     // padding: "24px",
-//     // alignment: "left",
-// };
-
-// export default function Chart() {
-//     return (
-//         <Box
-//             sx={{
-//                 ...ChartStyle,
-//                 borderRadius: "14.94px",
-//                 border: "0.62px solid #EFEFEF",
-
-//                 boxShadow:
-//                     "0px 0.62px 1.87px #00000005, 0px 3.74px 6.23px #b1b1b114",
-//             }}
-//         ></Box>
-//     );
-// }
-
-// ===============================================================================
-// ===============================================================================
-// ===============================================================================
-// ===============================================================================
-// ===============================================================================
 
 "use client";
 
