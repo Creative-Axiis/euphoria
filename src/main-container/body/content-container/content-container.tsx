@@ -1,8 +1,12 @@
 import Box from "@mui/material/Box";
+import Chart from "./chart";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Char from "./chart";
+import ContentContainerHeader from "./content-container-header";
 
-export const ContentContainerStyle = {
+import { Stack, SxProps } from "@mui/system";
+import EcommerceBody from "./E-commerce/body";
+
+export const ContentContainerStyle: SxProps = {
     height: "100vh",
     width: "100%", // need to use 1440px
     background: "#FFFFFF",
@@ -11,7 +15,7 @@ export const ContentContainerStyle = {
     position: "relative", // Keep it relative to ensure scrolling
     // marginLeft: "232px", // Remove all margins
     boxSizing: "border-box", // Include padding and border in element's width and height
-    padding: "24px 24px 200px 24px",
+    padding: "0px 0px 200px 0px",
     alignment: "left",
     overflowY: "auto", // Enable vertical scrolling
     zIndex: 999, // Ensure it's above other content
@@ -36,12 +40,19 @@ export const ContentContainerStyle = {
 export default function ContentContainer() {
     const isMobile = useMediaQuery("(max-width:1057px)");
     const containerStyle = {
-        ...ContentContainerStyle,
+        ...(ContentContainerStyle as SxProps),
         marginLeft: isMobile ? "0px" : "232px",
     };
     return (
+
+
         <Box sx={containerStyle}>
-            <Char />
+            <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
+                <ContentContainerHeader HeaderName="E-commerce" />
+                <EcommerceBody />
+            </Stack>
         </Box>
+
+
     );
 }
