@@ -419,15 +419,14 @@ export default function EcommerceBody() {
                                                 "&:hover": {
                                                     backgroundColor: "#5654D4",
                                                     "& .buttonText": {
-                                                        // Target the Typography component
                                                         color: "#FFFFFF",
                                                     },
                                                 },
-                                                textTransform: "none", // Prevents automatic uppercase
+                                                textTransform: "none",
                                             }}
                                         >
                                             <Typography
-                                                className="buttonText" // Add this class to target in hover
+                                                className="buttonText"
                                                 sx={{
                                                     fontSize: "14px",
                                                     fontWeight: "400",
@@ -437,17 +436,26 @@ export default function EcommerceBody() {
                                                 All
                                             </Typography>
                                         </Button>
-                                        <Box
+                                        <Button
                                             sx={{
                                                 height: "32px",
-                                                width: "36px",
+                                                minWidth: "36px",
                                                 borderRadius: "4px",
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
+                                                padding: 0,
+                                                "&:hover": {
+                                                    backgroundColor: "#5654D4",
+                                                    "& .buttonText": {
+                                                        color: "#FFFFFF",
+                                                    },
+                                                },
+                                                textTransform: "none",
                                             }}
                                         >
                                             <Typography
+                                                className="buttonText"
                                                 sx={{
                                                     fontSize: "14px",
                                                     fontWeight: "400",
@@ -456,18 +464,27 @@ export default function EcommerceBody() {
                                             >
                                                 1M
                                             </Typography>
-                                        </Box>
-                                        <Box
+                                        </Button>
+                                        <Button
                                             sx={{
                                                 height: "32px",
-                                                width: "33px",
+                                                minWidth: "33px",
                                                 borderRadius: "4px",
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
+                                                padding: 0,
+                                                "&:hover": {
+                                                    backgroundColor: "#5654D4",
+                                                    "& .buttonText": {
+                                                        color: "#FFFFFF",
+                                                    },
+                                                },
+                                                textTransform: "none",
                                             }}
                                         >
                                             <Typography
+                                                className="buttonText"
                                                 sx={{
                                                     fontSize: "14px",
                                                     fontWeight: "400",
@@ -476,28 +493,36 @@ export default function EcommerceBody() {
                                             >
                                                 6M
                                             </Typography>
-                                        </Box>
-                                        <Box
+                                        </Button>
+                                        <Button
                                             sx={{
                                                 height: "32px",
-                                                width: "33px",
+                                                minWidth: "33px",
                                                 borderRadius: "4px",
                                                 display: "flex",
                                                 alignItems: "center",
                                                 justifyContent: "center",
-                                                backgroundColor: "#5654D4",
+                                                padding: 0,
+                                                "&:hover": {
+                                                    backgroundColor: "#5654D4",
+                                                    "& .buttonText": {
+                                                        color: "#FFFFFF",
+                                                    },
+                                                },
+                                                textTransform: "none",
                                             }}
                                         >
                                             <Typography
+                                                className="buttonText"
                                                 sx={{
                                                     fontSize: "14px",
                                                     fontWeight: "400",
-                                                    color: "#FFFFFF",
+                                                    color: "#7C818A",
                                                 }}
                                             >
                                                 1Y
                                             </Typography>
-                                        </Box>
+                                        </Button>
                                     </Stack>
                                 </Box>
                             </Box>
