@@ -34,7 +34,7 @@ export const LeftPortion = {
 };
 export const RightPortion = {
     height: "444px", // Fixed height
-    width: "873px",
+    width: "100%",
     background: "#FAFAFA",
     display: "flex",
     position: "relative", // Keep it relative to ensure scrolling
@@ -530,7 +530,7 @@ export default function EcommerceBody() {
                                 <Box
                                     sx={{
                                         height: "111px",
-                                        width: "218.25px",
+                                        width: "25%",
                                         background: "#FAFAFA",
                                         display: "flex",
                                         position: "relative",
@@ -592,7 +592,7 @@ export default function EcommerceBody() {
                                 <Box
                                     sx={{
                                         height: "111px",
-                                        width: "218.25px",
+                                        width: "25%",
                                         background: "#FAFAFA",
                                         display: "flex",
                                         position: "relative",
@@ -654,7 +654,7 @@ export default function EcommerceBody() {
                                 <Box
                                     sx={{
                                         height: "111px",
-                                        width: "218.25px",
+                                        width: "25%",
                                         background: "#FAFAFA",
                                         display: "flex",
                                         position: "relative",
@@ -716,7 +716,7 @@ export default function EcommerceBody() {
                                 <Box
                                     sx={{
                                         height: "111px",
-                                        width: "218.25px",
+                                        width: "25%",
                                         background: "#FAFAFA",
                                         display: "flex",
                                         position: "relative",
