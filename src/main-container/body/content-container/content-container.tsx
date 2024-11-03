@@ -47,39 +47,39 @@ export default function ContentContainer() {
         marginLeft: isMobile ? "0px" : "232px",
     };
 
+    // Section 1 routes
+    const section1Routes = {
+        section1_analytics: "Analytics",
+        section1_ecommerce: "E-commerce",
+        section1_finance: "Finance",
+        section1_stockMarket: "Stock Market",
+        section1_crm: "CRM",
+        section1_projectManagement: "Project Management",
+        section1_booking: "Booking",
+        section1_crypto: "Crypto",
+    };
+
+    // Section 2 routes
+    const section2Routes = {
+        ecommerce: "E-commerce",
+        crm: "CRM",
+        projectManagement: "Project Management",
+        booking: "Booking",
+        kanban: "Kanban",
+        chat: "Chat",
+        calendar: "Calendar",
+    };
+
+    // Section 3 routes
+    const section3Routes = {
+        landingPage: "Landing Page",
+        authentication: "Authentication",
+        error: "Error",
+        pricing: "Pricing",
+    };
+
     const renderContent = () => {
-        // Section 1 routes
-        const section1Routes = {
-            analytics: "Analytics",
-            ecommerce: "E-commerce",
-            finance: "Finance",
-            stockMarket: "Stock Market",
-            crm: "CRM",
-            projectManagement: "Project Management",
-            booking: "Booking",
-            crypto: "Crypto",
-        };
-
-        // Section 2 routes
-        const section2Routes = {
-            ecommerce: "E-commerce",
-            crm: "CRM",
-            projectManagement: "Project Management",
-            booking: "Booking",
-            kanban: "Kanban",
-            chat: "Chat",
-            calendar: "Calendar",
-        };
-
-        // Section 3 routes
-        const section3Routes = {
-            landingPage: "Landing Page",
-            authentication: "Authentication",
-            error: "Error",
-            pricing: "Pricing",
-        };
-
-        if (activeTab === "ecommerce") {
+        if (activeTab === "section1_ecommerce") {
             return <EcommerceBody />;
         }
         // Check all sections for the active tab
@@ -97,7 +97,10 @@ export default function ContentContainer() {
             <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
                 <ContentContainerHeader
                     HeaderName={
-                        activeTab.charAt(0).toUpperCase() + activeTab.slice(1)
+                        (section1Routes as Record<string, string>)[activeTab] ||
+                        (section2Routes as Record<string, string>)[activeTab] ||
+                        (section3Routes as Record<string, string>)[activeTab] ||
+                        "Unknown"
                     }
                 />
                 {renderContent()}

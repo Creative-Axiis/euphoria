@@ -128,35 +128,35 @@ export default function Section1() {
 
     const icons: Icons = useMemo(
         () => ({
-            analytics: {
+            section1_analytics: {
                 default: "/icons/sideBar/Analytics.svg",
                 white: "/icons/sideBar/Analytics_white.svg",
             },
-            ecommerce: {
+            section1_ecommerce: {
                 default: "/icons/sideBar/E-commerce.svg",
                 white: "/icons/sideBar/E-commerce_white.svg",
             },
-            finance: {
+            section1_finance: {
                 default: "/icons/sideBar/Finance.svg",
                 white: "/icons/sideBar/Finance_white.svg",
             },
-            stockMarket: {
+            section1_stockMarket: {
                 default: "/icons/sideBar/Stock-Market.svg",
                 white: "/icons/sideBar/Stock-Market_white.svg",
             },
-            crm: {
+            section1_crm: {
                 default: "/icons/sideBar/CRM.svg",
                 white: "/icons/sideBar/CRM_white.svg",
             },
-            projectManagement: {
+            section1_projectManagement: {
                 default: "/icons/sideBar/Project-Management.svg",
                 white: "/icons/sideBar/Project-Management_white.svg",
             },
-            booking: {
+            section1_booking: {
                 default: "/icons/sideBar/Booking.svg",
                 white: "/icons/sideBar/Booking_white.svg",
             },
-            crypto: {
+            section1_crypto: {
                 default: "/icons/sideBar/Crypto.svg",
                 white: "/icons/sideBar/Crypto_white.svg",
             },
@@ -166,14 +166,14 @@ export default function Section1() {
 
     const menuItems = useMemo(
         () => [
-            { id: "analytics", label: "Analytics" },
-            { id: "ecommerce", label: "E-commerce" },
-            { id: "finance", label: "Finance" },
-            { id: "stockMarket", label: "Stock Market" },
-            { id: "crm", label: "CRM" },
-            { id: "projectManagement", label: "Project Management" },
-            { id: "booking", label: "Booking" },
-            { id: "crypto", label: "Crypto" },
+            { id: "section1_analytics", label: "Analytics" },
+            { id: "section1_ecommerce", label: "E-commerce" },
+            { id: "section1_finance", label: "Finance" },
+            { id: "section1_stockMarket", label: "Stock Market" },
+            { id: "section1_crm", label: "CRM" },
+            { id: "section1_projectManagement", label: "Project Management" },
+            { id: "section1_booking", label: "Booking" },
+            { id: "section1_crypto", label: "Crypto" },
         ],
         []
     );
