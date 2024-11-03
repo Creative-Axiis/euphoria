@@ -1,11 +1,13 @@
 import { Box, Collapse, Stack, Typography } from "@mui/material";
 import { useCallback, useMemo, memo, useState } from "react";
+import { useNavigation } from "../../../../NavigationContext";
 
 // Types
 interface DropdownItemProps {
     id: string;
     label: string;
     isOpen: boolean;
+    subItems: string[];
     isHovered: boolean;
     onMouseEnter: (id: string) => void;
     onMouseLeave: () => void;
@@ -70,29 +72,81 @@ const styles = {
 };
 
 // Memoized dropdown item component
-const DropdownItem = memo(({ id, label, isOpen, isHovered, onMouseEnter, onMouseLeave, onClick }: DropdownItemProps) => (
-    <Box
-        sx={styles.item}
-        onClick={() => onClick(id)}
-        onMouseEnter={() => onMouseEnter(id)}
-        onMouseLeave={onMouseLeave}
-    >
-        <Box
-            sx={{
-                ...styles.icon,
-                transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
-            }}
-            component="img"
-            src={`/icons/sideBar/${isHovered ? 'dropdown_white.svg' : 'dropdown.svg'}`}
-            alt="icon"
-        />
-        <Typography sx={styles.text}>{label}</Typography>
-    </Box>
-));
+
+const DropdownItem = memo(
+    ({
+        id,
+        label,
+        isOpen,
+        isHovered,
+        subItems,
+        onMouseEnter,
+        onMouseLeave,
+        onClick,
+    }: DropdownItemProps) => {
+        const { setActiveTab, activeTab } = useNavigation();
+        const isSelected = activeTab === id;
+
+        const icons = {
+            dropdown: {
+                default: "/icons/sideBar/dropdown.svg",
+                white: "/icons/sideBar/dropdown_white.svg",
+            },
+        };
+
+        return (
+            <>
+                <Box
+                    sx={{
+                        ...styles.item,
+                        backgroundColor: isSelected ? "#5654D4" : "transparent",
+                        "& .MuiTypography-root": {
+                            color: isSelected ? "#FFFFFF" : "#101318",
+                        },
+                    }}
+                    onClick={() => {
+                        onClick(id);
+                        setActiveTab(id);
+                    }}
+                    onMouseEnter={() => onMouseEnter(id)}
+                    onMouseLeave={onMouseLeave}
+                >
+                    <Box
+                        sx={{
+                            ...styles.icon,
+                            transform: isOpen
+                                ? "rotate(90deg)"
+                                : "rotate(0deg)",
+                        }}
+                        component="img"
+                        src={
+                            isHovered
+                                ? icons.dropdown.white
+                                : icons.dropdown.default
+                        }
+                        alt="icon"
+                    />
+                    <Typography sx={styles.text}>{label}</Typography>
+                </Box>
+                <Collapse in={isOpen} timeout="auto" unmountOnExit>
+                    <Stack direction="column" spacing={0}>
+                        {subItems.map((item, index) => (
+                            <Box
+                                key={`${id}-${index}`}
+                                sx={{ ...styles.item, ...styles.subItem }}
+                            >
+                                <Typography sx={styles.text}>{item}</Typography>
+                            </Box>
+                        ))}
+                    </Stack>
+                </Collapse>
+            </>
+        );
+    }
+);
 
 DropdownItem.displayName = "DropdownItem";
 
-// Main component
 export default function Section3() {
     const [hoveredItem, setHoveredItem] = useState<string | null>(null);
     const [openSection, setOpenSection] = useState<string | null>(null);
@@ -106,44 +160,50 @@ export default function Section3() {
     }, []);
 
     const handleClick = useCallback((id: string) => {
-        setOpenSection(prev => prev === id ? null : id);
+        setOpenSection((prev) => (prev === id ? null : id));
     }, []);
 
-    const menuItems = useMemo(() => [
-        { id: "landing_page", label: "Landing Page" },
-        { id: "authentication", label: "Authentication" },
-        { id: "error", label: "Error" },
-        { id: "pricing", label: "Pricing" },
-    ], []);
+    const menuItems = useMemo(
+        () => [
+            {
+                id: "landing_page",
+                label: "Landing Page",
+                subItems: ["Test 1", "Test 2", "Test 3"],
+            },
+            {
+                id: "authentication",
+                label: "Authentication",
+                subItems: ["Test 1", "Test 2", "Test 3"],
+            },
+            {
+                id: "error",
+                label: "Error",
+                subItems: ["Test 1", "Test 2", "Test 3"],
+            },
+            {
+                id: "pricing",
+                label: "Pricing",
+                subItems: ["Test 1", "Test 2", "Test 3"],
+            },
+        ],
+        []
+    );
 
     return (
         <Box sx={styles.section}>
             <Stack direction="column" spacing={0}>
-                <Box width="200px" height="29px">
-                    <Typography sx={styles.header}>Pages</Typography>
-                </Box>
                 {menuItems.map((item) => (
-                    <>
-                        <DropdownItem
-                            key={item.id}
-                            id={item.id}
-                            label={item.label}
-                            isOpen={openSection === item.id}
-                            isHovered={hoveredItem === item.id}
-                            onMouseEnter={handleMouseEnter}
-                            onMouseLeave={handleMouseLeave}
-                            onClick={handleClick}
-                        />
-                        <Collapse in={openSection === item.id} timeout="auto" unmountOnExit>
-                            <Stack direction="column" spacing={0}>
-                                {["Test 1", "Test 2", "Test 3"].map((subItem, index) => (
-                                    <Box key={`${item.id}-${index}`} sx={{ ...styles.item, ...styles.subItem }}>
-                                        <Typography sx={styles.text}>{subItem}</Typography>
-                                    </Box>
-                                ))}
-                            </Stack>
-                        </Collapse>
-                    </>
+                    <DropdownItem
+                        key={item.id}
+                        id={item.id}
+                        label={item.label}
+                        isOpen={openSection === item.id}
+                        isHovered={hoveredItem === item.id}
+                        subItems={item.subItems}
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        onClick={handleClick}
+                    />
                 ))}
             </Stack>
         </Box>

@@ -1,11 +1,7 @@
 import { Box, Collapse, Stack, Typography } from "@mui/material";
 import { useCallback, useMemo, memo, useState } from "react";
+import { useNavigation } from "../../../../NavigationContext";
 
-// Types
-interface DropdownIconPaths {
-    default: string;
-    white: string;
-}
 
 interface DropdownItemProps {
     id: string;
@@ -78,6 +74,9 @@ const DropdownItem = memo(({
     onMouseLeave,
     onClick,
 }: DropdownItemProps) => {
+    const { setActiveTab, activeTab } = useNavigation();
+    const isSelected = activeTab === id;
+
     const icons = {
         dropdown: {
             default: "/icons/sideBar/dropdown.svg",
@@ -88,8 +87,17 @@ const DropdownItem = memo(({
     return (
         <>
             <Box
-                sx={styles.item}
-                onClick={() => onClick(id)}
+                sx={{
+                    ...styles.item,
+                    backgroundColor: isSelected ? "#5654D4" : "transparent",
+                    "& .MuiTypography-root": {
+                        color: isSelected ? "#FFFFFF" : "#101318"
+                    }
+                }}
+                onClick={() => {
+                    onClick(id);
+                    setActiveTab(id);
+                }}
                 onMouseEnter={() => onMouseEnter(id)}
                 onMouseLeave={onMouseLeave}
             >

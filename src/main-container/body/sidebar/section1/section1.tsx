@@ -1,6 +1,7 @@
 import { Stack, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import { useCallback, useMemo, memo, useState } from "react";
+import { useNavigation } from "../../../../NavigationContext";
 
 // Types
 interface IconPaths {
@@ -74,21 +75,42 @@ const styles = {
 };
 
 // Memoized SidebarItem component
-const SidebarItem = memo(({ id, icon, label, isHovered, onMouseEnter, onMouseLeave }: SidebarItemProps) => (
-    <Box
-        sx={styles.item}
-        onMouseEnter={() => onMouseEnter(id)}
-        onMouseLeave={onMouseLeave}
-    >
+const SidebarItem = memo(function SidebarItem({
+    id,
+    icon,
+    label,
+    isHovered,
+    onMouseEnter,
+    onMouseLeave,
+}: SidebarItemProps) {
+    const { setActiveTab, activeTab } = useNavigation();
+    const isSelected = activeTab === id;
+
+    return (
         <Box
-            sx={styles.icon}
-            component="img"
-            src={isHovered ? icon.white : icon.default}
-            alt={`${id}-icon`}
-        />
-        <Typography sx={styles.text}>{label}</Typography>
-    </Box>
-));
+            sx={{
+                ...styles.item,
+                backgroundColor: isSelected ? "#5654D4" : "transparent",
+                "& .MuiTypography-root": {
+                    color: isSelected ? "#FFFFFF" : "#101318"
+                }
+            }}
+            onClick={() => {
+                setActiveTab(id);
+            }}
+            onMouseEnter={() => onMouseEnter(id)}
+            onMouseLeave={onMouseLeave}
+        >
+            <Box
+                sx={styles.icon}
+                component="img"
+                src={isHovered || isSelected ? icon.white : icon.default}
+                alt={`${id}-icon`}
+            />
+            <Typography sx={styles.text}>{label}</Typography>
+        </Box>
+    );
+});
 
 SidebarItem.displayName = "SidebarItem";
 
@@ -104,51 +126,57 @@ export default function Section1() {
         setHoveredItem(null);
     }, []);
 
-    const icons: Icons = useMemo(() => ({
-        analytics: {
-            default: "/icons/sideBar/Analytics.svg",
-            white: "/icons/sideBar/Analytics_white.svg",
-        },
-        ecommerce: {
-            default: "/icons/sideBar/E-commerce.svg",
-            white: "/icons/sideBar/E-commerce_white.svg",
-        },
-        finance: {
-            default: "/icons/sideBar/Finance.svg",
-            white: "/icons/sideBar/Finance_white.svg",
-        },
-        stockMarket: {
-            default: "/icons/sideBar/Stock-Market.svg",
-            white: "/icons/sideBar/Stock-Market_white.svg",
-        },
-        crm: {
-            default: "/icons/sideBar/CRM.svg",
-            white: "/icons/sideBar/CRM_white.svg",
-        },
-        projectManagement: {
-            default: "/icons/sideBar/Project-Management.svg",
-            white: "/icons/sideBar/Project-Management_white.svg",
-        },
-        booking: {
-            default: "/icons/sideBar/Booking.svg",
-            white: "/icons/sideBar/Booking_white.svg",
-        },
-        crypto: {
-            default: "/icons/sideBar/Crypto.svg",
-            white: "/icons/sideBar/Crypto_white.svg",
-        },
-    }), []);
+    const icons: Icons = useMemo(
+        () => ({
+            analytics: {
+                default: "/icons/sideBar/Analytics.svg",
+                white: "/icons/sideBar/Analytics_white.svg",
+            },
+            ecommerce: {
+                default: "/icons/sideBar/E-commerce.svg",
+                white: "/icons/sideBar/E-commerce_white.svg",
+            },
+            finance: {
+                default: "/icons/sideBar/Finance.svg",
+                white: "/icons/sideBar/Finance_white.svg",
+            },
+            stockMarket: {
+                default: "/icons/sideBar/Stock-Market.svg",
+                white: "/icons/sideBar/Stock-Market_white.svg",
+            },
+            crm: {
+                default: "/icons/sideBar/CRM.svg",
+                white: "/icons/sideBar/CRM_white.svg",
+            },
+            projectManagement: {
+                default: "/icons/sideBar/Project-Management.svg",
+                white: "/icons/sideBar/Project-Management_white.svg",
+            },
+            booking: {
+                default: "/icons/sideBar/Booking.svg",
+                white: "/icons/sideBar/Booking_white.svg",
+            },
+            crypto: {
+                default: "/icons/sideBar/Crypto.svg",
+                white: "/icons/sideBar/Crypto_white.svg",
+            },
+        }),
+        []
+    );
 
-    const menuItems = useMemo(() => [
-        { id: "analytics", label: "Analytics" },
-        { id: "ecommerce", label: "E-commerce" },
-        { id: "finance", label: "Finance" },
-        { id: "stockMarket", label: "Stock Market" },
-        { id: "crm", label: "CRM" },
-        { id: "projectManagement", label: "Project Management" },
-        { id: "booking", label: "Booking" },
-        { id: "crypto", label: "Crypto" },
-    ], []);
+    const menuItems = useMemo(
+        () => [
+            { id: "analytics", label: "Analytics" },
+            { id: "ecommerce", label: "E-commerce" },
+            { id: "finance", label: "Finance" },
+            { id: "stockMarket", label: "Stock Market" },
+            { id: "crm", label: "CRM" },
+            { id: "projectManagement", label: "Project Management" },
+            { id: "booking", label: "Booking" },
+            { id: "crypto", label: "Crypto" },
+        ],
+        []
+    );
 
     return (
         <Box sx={styles.section}>

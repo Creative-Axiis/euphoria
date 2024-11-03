@@ -1,10 +1,11 @@
 import Box from "@mui/material/Box";
-import Chart from "./chart";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import ContentContainerHeader from "./content-container-header";
 
 import { Stack, SxProps } from "@mui/system";
 import EcommerceBody from "./E-commerce/body";
+import PlaceholderContent from "../../../PlaceholderContent";
+import { useNavigation } from "../../../NavigationContext";
 
 export const ContentContainerStyle: SxProps = {
     height: "100vh",
@@ -38,21 +39,69 @@ export const ContentContainerStyle: SxProps = {
 };
 
 export default function ContentContainer() {
+    const { activeTab } = useNavigation();
+
     const isMobile = useMediaQuery("(max-width:1057px)");
     const containerStyle = {
         ...(ContentContainerStyle as SxProps),
         marginLeft: isMobile ? "0px" : "232px",
     };
+
+    const renderContent = () => {
+        // Section 1 routes
+        const section1Routes = {
+            analytics: "Analytics",
+            ecommerce: "E-commerce",
+            finance: "Finance",
+            stockMarket: "Stock Market",
+            crm: "CRM",
+            projectManagement: "Project Management",
+            booking: "Booking",
+            crypto: "Crypto",
+        };
+
+        // Section 2 routes
+        const section2Routes = {
+            ecommerce: "E-commerce",
+            crm: "CRM",
+            projectManagement: "Project Management",
+            booking: "Booking",
+            kanban: "Kanban",
+            chat: "Chat",
+            calendar: "Calendar",
+        };
+
+        // Section 3 routes
+        const section3Routes = {
+            landingPage: "Landing Page",
+            authentication: "Authentication",
+            error: "Error",
+            pricing: "Pricing",
+        };
+
+        if (activeTab === "ecommerce") {
+            return <EcommerceBody />;
+        }
+        // Check all sections for the active tab
+        const title =
+            (section1Routes as Record<string, string>)[activeTab] ||
+            (section2Routes as Record<string, string>)[activeTab] ||
+            (section3Routes as Record<string, string>)[activeTab] ||
+            "Unknown";
+
+        return <PlaceholderContent title={title} />;
+    };
+
     return (
-
-
         <Box sx={containerStyle}>
             <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
-                <ContentContainerHeader HeaderName="E-commerce" />
-                <EcommerceBody />
+                <ContentContainerHeader
+                    HeaderName={
+                        activeTab.charAt(0).toUpperCase() + activeTab.slice(1)
+                    }
+                />
+                {renderContent()}
             </Stack>
         </Box>
-
-
     );
 }
