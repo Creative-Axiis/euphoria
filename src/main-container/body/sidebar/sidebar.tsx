@@ -37,6 +37,9 @@ export const SidebarStyle = {
     "&::-webkit-scrollbar-track": {
         backgroundColor: "#F1F1F1", // Scrollbar track background
     },
+    // Custom scrollbar for Firefox
+    scrollbarWidth: "thin", // Width of the scrollbar
+    scrollbarColor: "#F1F1F1 #F1F1F1", // Thumb and track color
 };
 
 export default function SideBar() {
