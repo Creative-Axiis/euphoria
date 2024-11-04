@@ -36,6 +36,7 @@ const styles = {
         boxSizing: "border-box",
         borderRadius: "8px",
         transition: "all 0.2s ease-in-out",
+        cursor: "pointer", // Add this line
     },
     icon: {
         width: "14px",

@@ -31,6 +31,7 @@ const styles = {
         position: "relative",
         margin: 0,
         boxSizing: "border-box",
+        userSelect: "none", // Prevent text selection
     },
     item: {
         width: "200px",
@@ -43,6 +44,8 @@ const styles = {
         alignItems: "center",
         borderRadius: "8px",
         transition: "all 0.2s ease-in-out",
+        userSelect: "none", // Prevent text selection
+        cursor: "pointer", // Change cursor to pointer on hover
         // Remove hover effect
         // "&:hover": {
         //     backgroundColor: "#5654D4",
@@ -56,6 +59,7 @@ const styles = {
     icon: {
         width: "14px",
         height: "14px",
+        userSelect: "none", // Prevent text selection
     },
     text: {
         paddingLeft: "8px",
@@ -64,6 +68,7 @@ const styles = {
         lineHeight: "16px",
         letterSpacing: "-0.01em",
         color: "#101318",
+        userSelect: "none", // Prevent text selection
     },
     header: {
         padding: "8px",
@@ -72,6 +77,7 @@ const styles = {
         lineHeight: "13.31px",
         letterSpacing: "-0.01em",
         color: "#A1A1A1",
+        userSelect: "none", // Prevent text selection
     },
 };
 
