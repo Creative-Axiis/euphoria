@@ -1,156 +1,95 @@
-// Chart.tsx
 import React, { useEffect, useRef } from 'react';
-import * as echarts from 'echarts/core';
-import {
-  TooltipComponent,
-  TooltipComponentOption,
-  GridComponent,
-  GridComponentOption
-} from 'echarts/components';
-import {
-  BarChart,
-  BarSeriesOption,
-  LineChart,
-  LineSeriesOption
-} from 'echarts/charts';
-import { UniversalTransition } from 'echarts/features';
-import { CanvasRenderer } from 'echarts/renderers';
-
-echarts.use([
-  TooltipComponent,
-  GridComponent,
-  BarChart,
-  LineChart,
-  CanvasRenderer,
-  UniversalTransition
-]);
-
-type EChartsOption = echarts.ComposeOption<
-  | TooltipComponentOption
-  | GridComponentOption
-  | BarSeriesOption
-  | LineSeriesOption
->;
+import * as echarts from 'echarts';
 
 const Chart = () => {
   const chartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const chartDom = chartRef.current!;
-    const myChart = echarts.init(chartDom);
+    if (!chartRef.current) return;
 
-    // Sample data
-    const evaporationData = [
-      34, 54, 74, 150, 91, 74, 98, 74, 133, 74, 54, 98
-    ];
-    const temperatureData = [
-      34, 54, 74, 150, 91, 74, 98, 74, 133, 74, 54, 98
-    ];
+    const chart = echarts.init(chartRef.current);
 
-    // Calculate dynamic max values for y-axes
-    const maxEvaporation = Math.max(...evaporationData);
-    const yAxisMaxBar = maxEvaporation * 1.2; // Add 20% padding for the bar chart
-
-    const maxTemperature = Math.max(...temperatureData);
-    const yAxisMaxLine = maxTemperature * 1.2; // Add 20% padding for the line chart
-
-    const option: EChartsOption = {
+    // Remove type annotation and let TypeScript infer the type
+    const option = {
       tooltip: {
         trigger: 'axis',
         axisPointer: {
-          type: 'cross',
-          crossStyle: {
-            color: '#999'
-          }
+          type: 'none'  // Changed from 'cross' to 'none'
         }
       },
-      xAxis: [
-        {
-          type: 'category',
-          data: [
-            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-            'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
-          ],
-          axisPointer: {
-            show: false // Disable axis pointer for x-axis to remove month name on hover
-          },
-          axisLine: {
-            show: true,
-            lineStyle: {
-              color: '#E9E9E9',
-              width: 2
-            }
-          },
-          axisTick: {
-            show: false
-          },
-          axisLabel: {
-            show: true,
-            color: '#7C818A',
-            margin: 20,
-            fontSize: 13,
-            fontFamily: 'Inter',
-            fontWeight: 500,
-            lineHeight: 16,
-            overflow: 'break'
-          }
-        }
-      ],
-      yAxis: [
-        {
-          type: 'value',
-          min: 0,
-          max: yAxisMaxBar, // Dynamic max value for relative height scaling of bar chart
-          interval: yAxisMaxBar / 5, // Divide y-axis into 5 intervals
-          axisLabel: {
-            show: false
-          },
-          splitLine: {
-            show: false
-          }
-        },
-        {
-          type: 'value',
-          min: 0,
-          max: yAxisMaxLine, // Dynamic max value for relative height scaling of line chart
-          interval: yAxisMaxLine / 5, // Divide y-axis into 5 intervals
-          axisLabel: {
-            show: false
-          },
-          splitLine: {
-            show: false
-          }
-        }
-      ],
       grid: {
-        top: '20px',
-        left: '24px', // Adjust left margin
-        right: '24px', // Adjust right margin
-        bottom: '40px', // Adjust bottom margin to make space for the line above the months
-        containLabel: true // Ensure the grid contains the labels
+        top: 20,        // Changed from 0 to 20px
+        left: 24,        // Changed back to 24px for left padding
+        right: 24,       // Changed back to 24px for right padding
+        bottom: 52,     // Increased to 52 to move content up
+        containLabel: false
       },
+      xAxis: [{
+        type: 'category',
+        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        axisLine: {
+          lineStyle: {
+            color: '#E9E9E9',
+            width: 1,
+            type: 'solid'  // Added to match the solid border style
+          },
+          onZero: true,    // Changed to true
+          symbol: ['none', 'none']
+        },
+        boundaryGap: true,  // Added to ensure proper spacing
+        offset: 12,         // Added offset to move x-axis line down
+        axisTick: { show: false },
+        axisLabel: {
+          color: '#7C818A',
+          fontSize: 13,
+          fontFamily: 'Inter',
+          fontWeight: 500
+        },
+        axisPointer: {
+          show: false  // Added this to completely disable x-axis pointer
+        }
+      }],
+      yAxis: [{
+        type: 'value',
+        show: false,
+        max: 600  // Increased from 500 to allow taller bars
+      }, {
+        type: 'value',
+        show: false,
+        max: 1000  // Keep this the same for dots
+      }],
       series: [
         {
-          name: 'Evaporation',
           type: 'bar',
-          tooltip: {
-            valueFormatter: (value) => `${value} ml`
-          },
-          barWidth: '46.75px', // Set bar width to 46.75px
-          barGap: '24px', // Set gap between categories to 24px
+          barWidth: 46.75,
+          barGap: '24px',     // Add gap between bars
           itemStyle: {
-            color: '#5654D4', // Set bar color
+            color: '#5654D4',
             borderRadius: [5, 5, 5, 5]
           },
-          data: evaporationData
+          // Increased bar heights by ~1.5x
+          data: [100, 190, 280, 337, 217, 205, 298, 205, 324, 205, 190, 298]
         },
         {
-          name: 'Temperature',
+          // Descending line
           type: 'line',
           yAxisIndex: 1,
-          tooltip: {
-            valueFormatter: (value) => `${value} °C`
+          symbol: 'none',
+          lineStyle: {
+            color: '#5654D4',
+            width: 2
           },
+          // Connect the dots properly
+          data: [[-1, 800], [0, 680]],  // Ensure it connects to the first dot
+          xAxisIndex: 0,  // Use the same xAxis as the main line
+          z: 2  // Ensure line appears above other elements
+        },
+        {
+          // Line series with adjusted values (reduced by ~12%)
+          type: 'line',
+          yAxisIndex: 1,
+          symbol: 'image://Dot.svg',  // Changed from 'circle' to use Dot.svg
+          symbolSize: [16, 16],       // Adjust size to match your SVG dimensions
           lineStyle: {
             color: '#5654D4',
             width: 2
@@ -158,43 +97,27 @@ const Chart = () => {
           itemStyle: {
             color: '#5654D4'
           },
-          symbol: 'image://Dot.svg', // Use Dot.svg as the symbol
-          symbolSize: [16, 16], // Set the size of the symbol to match the SVG dimensions
-          data: temperatureData
-        }
-      ],
-      graphic: [
-        {
-          type: 'line',
-          shape: {
-            x1: 0,
-            y1: '100%', // Align with the bottom of the chart
-            x2: '100%',
-            y2: '100%' // Align with the bottom of the chart
-          },
-          style: {
-            stroke: '#E9E9E9',
-            lineWidth: 1
-          }
+          // Decreased values to move line up
+          data: [680, 700, 720, 800, 710, 690, 720, 690, 740, 690, 680, 720]
         }
       ]
     };
 
-    myChart.setOption(option);
+    chart.setOption(option as any); // Use type assertion as a last resort
 
     const handleResize = () => {
-      myChart.resize();
+      chart.resize();
     };
 
     window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      myChart.dispose();
+      chart.dispose();
     };
   }, []);
 
-  return <div ref={chartRef} style={{ height: '100%', width: '100%' }}></div>;
+  return <div ref={chartRef} style={{ height: '252px', width: '100%' }} />;
 };
 
 export default Chart;
