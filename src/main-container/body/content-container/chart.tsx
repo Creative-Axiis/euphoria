@@ -1,5 +1,5 @@
 // Chart.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as echarts from 'echarts/core';
 import {
   TooltipComponent,
@@ -33,8 +33,10 @@ type EChartsOption = echarts.ComposeOption<
 >;
 
 const Chart = () => {
+  const chartRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    const chartDom = document.getElementById('main')!;
+    const chartDom = chartRef.current!;
     const myChart = echarts.init(chartDom);
 
     // Sample data
@@ -70,7 +72,7 @@ const Chart = () => {
             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
           ],
           axisPointer: {
-            type: 'shadow'
+            show: false // Disable axis pointer for x-axis to remove month name on hover
           },
           axisLine: {
             show: true,
@@ -85,7 +87,12 @@ const Chart = () => {
           axisLabel: {
             show: true,
             color: '#7C818A',
-            margin: 20
+            margin: 20,
+            fontSize: 13,
+            fontFamily: 'Inter',
+            fontWeight: 500,
+            lineHeight: 16,
+            overflow: 'break'
           }
         }
       ],
@@ -117,9 +124,10 @@ const Chart = () => {
       ],
       grid: {
         top: '20px',
-        left: '10%',
-        right: '10%',
-        height: '133px', // Set grid height to 133px
+        left: '24px', // Adjust left margin
+        right: '24px', // Adjust right margin
+        bottom: '40px', // Adjust bottom margin to make space for the line above the months
+        containLabel: true // Ensure the grid contains the labels
       },
       series: [
         {
@@ -128,9 +136,10 @@ const Chart = () => {
           tooltip: {
             valueFormatter: (value) => `${value} ml`
           },
-          barWidth: 46.75,
-          barGap: '24%',
+          barWidth: '46.75px', // Set bar width to 46.75px
+          barGap: '24px', // Set gap between categories to 24px
           itemStyle: {
+            color: '#5654D4', // Set bar color
             borderRadius: [5, 5, 5, 5]
           },
           data: evaporationData
@@ -149,21 +158,43 @@ const Chart = () => {
           itemStyle: {
             color: '#5654D4'
           },
-          symbol: 'circle',
-          symbolSize: 8,
+          symbol: 'image://Dot.svg', // Use Dot.svg as the symbol
+          symbolSize: [16, 16], // Set the size of the symbol to match the SVG dimensions
           data: temperatureData
+        }
+      ],
+      graphic: [
+        {
+          type: 'line',
+          shape: {
+            x1: 0,
+            y1: '100%', // Align with the bottom of the chart
+            x2: '100%',
+            y2: '100%' // Align with the bottom of the chart
+          },
+          style: {
+            stroke: '#E9E9E9',
+            lineWidth: 1
+          }
         }
       ]
     };
 
     myChart.setOption(option);
 
+    const handleResize = () => {
+      myChart.resize();
+    };
+
+    window.addEventListener('resize', handleResize);
+
     return () => {
+      window.removeEventListener('resize', handleResize);
       myChart.dispose();
     };
   }, []);
 
-  return <div id="main" style={{ height: '100%', width: '100%' }}></div>;
+  return <div ref={chartRef} style={{ height: '100%', width: '100%' }}></div>;
 };
 
 export default Chart;
