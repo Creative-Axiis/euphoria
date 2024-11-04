@@ -36,14 +36,6 @@ const styles = {
         boxSizing: "border-box",
         borderRadius: "8px",
         transition: "all 0.2s ease-in-out",
-        "&:hover": {
-            backgroundColor: "#5654D4",
-            cursor: "pointer",
-            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-            "& .MuiTypography-root": {
-                color: "#FFFFFF",
-            },
-        },
     },
     icon: {
         width: "14px",
@@ -119,11 +111,7 @@ const DropdownItem = memo(
                                 : "rotate(0deg)",
                         }}
                         component="img"
-                        src={
-                            isHovered
-                                ? icons.dropdown.white
-                                : icons.dropdown.default
-                        }
+                        src={isSelected ? icons.dropdown.white : icons.dropdown.default}
                         alt="icon"
                     />
                     <Typography sx={styles.text}>{label}</Typography>
@@ -192,6 +180,9 @@ export default function Section3() {
     return (
         <Box sx={styles.section}>
             <Stack direction="column" spacing={0}>
+                <Box width="200px" height="29px">
+                    <Typography sx={styles.header}>Pages</Typography>
+                </Box>
                 {menuItems.map((item) => (
                     <DropdownItem
                         key={item.id}

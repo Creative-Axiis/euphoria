@@ -1,42 +1,9 @@
-// import Box from "@mui/material/Box";
-// import Section1 from "./section1/section1";
-// import Section2 from "./section2/section2";
-// import Section3 from "./section3/section3";
-// import { Stack } from "@mui/material";
-
-// export const SidebarStyle = {
-//     height: "fit-content",
-//     width: "232px", // need to use 1440px
-//     // position: "fixed",
-//     display: "flex",
-//     position: "relative", // Keep it relative to ensure scrolling
-//     margin: 0, // Remove all margins
-//     boxSizing: "border-box", // Include padding and border in element's width and height
-//     padding: "32px 16px 32px 16px",
-//     alignment: "left",
-//     backgroundColor: "#FAFAFA",
-//     border: "1px solid #EAEAEA",
-//     overflowY: "scroll", // Enable vertical scrolling
-// };
-
-// export default function SideBar() {
-//     return (
-//         <Box sx={SidebarStyle}>
-//             <Stack direction="column" spacing={0}>
-//                 <Section1 />
-//                 <Section2 />
-//                 <Section3 />
-//             </Stack>
-//         </Box>
-//     );
-// }
 import Box from "@mui/material/Box";
 import Section1 from "./section1/section1";
 import Section2 from "./section2/section2";
 import Section3 from "./section3/section3";
 import { Stack } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
-
 
 export const SidebarStyle = {
     height: "100vh", // Full height of the viewport
@@ -61,14 +28,14 @@ export const SidebarStyle = {
         width: "4px", // Width of the scrollbar
     },
     "&::-webkit-scrollbar-thumb": {
-        backgroundColor: "#888", // Scrollbar thumb color
+        backgroundColor: "#F1F1F1", // Scrollbar thumb color
         borderRadius: "10px", // Make the scrollbar rounded
     },
     "&::-webkit-scrollbar-thumb:hover": {
-        backgroundColor: "#555", // Thumb color on hover
+        backgroundColor: "#F1F1F1", // Thumb color on hover
     },
     "&::-webkit-scrollbar-track": {
-        backgroundColor: "#f1f1f1", // Scrollbar track background
+        backgroundColor: "#F1F1F1", // Scrollbar track background
     },
 };
 

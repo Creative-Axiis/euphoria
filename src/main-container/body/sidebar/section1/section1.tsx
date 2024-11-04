@@ -43,14 +43,15 @@ const styles = {
         alignItems: "center",
         borderRadius: "8px",
         transition: "all 0.2s ease-in-out",
-        "&:hover": {
-            backgroundColor: "#5654D4",
-            cursor: "pointer",
-            boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
-            "& .MuiTypography-root": {
-                color: "#FFFFFF",
-            },
-        },
+        // Remove hover effect
+        // "&:hover": {
+        //     backgroundColor: "#5654D4",
+        //     cursor: "pointer",
+        //     boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+        //     "& .MuiTypography-root": {
+        //         color: "#FFFFFF",
+        //     },
+        // },
     },
     icon: {
         width: "14px",
@@ -98,13 +99,14 @@ const SidebarItem = memo(function SidebarItem({
             onClick={() => {
                 setActiveTab(id);
             }}
-            onMouseEnter={() => onMouseEnter(id)}
-            onMouseLeave={onMouseLeave}
+        // Remove hover handlers
+        // onMouseEnter={() => onMouseEnter(id)}
+        // onMouseLeave={onMouseLeave}
         >
             <Box
                 sx={styles.icon}
                 component="img"
-                src={isHovered || isSelected ? icon.white : icon.default}
+                src={isSelected ? icon.white : icon.default}
                 alt={`${id}-icon`}
             />
             <Typography sx={styles.text}>{label}</Typography>
