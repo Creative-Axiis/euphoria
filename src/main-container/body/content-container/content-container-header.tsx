@@ -20,6 +20,12 @@ export const ContentContainerHeaderStyle = {
 
 };
 
+/**
+ * A header component for the content container.
+ * 
+ * @param {Object} props - The properties object.
+ * @param {string} props.HeaderName - The name to display in the header.
+ */
 export default function ContentContainerHeader({ HeaderName }: { HeaderName: string }) {
 
 
