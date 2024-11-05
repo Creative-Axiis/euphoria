@@ -33,6 +33,7 @@ export const LeftPortion = {
     top: 0,
     left: 0,
 };
+
 export const RightPortion = {
     height: "444px", // Fixed height
     width: "100%",
@@ -47,64 +48,6 @@ export const RightPortion = {
     left: 0,
 };
 
-export const LittleBox1 = {
-    height: "111px", // Fixed height
-    width: "100%",
-    background: "#FAFAFA",
-    display: "flex",
-    position: "relative", // Keep it relative to ensure scrolling
-    boxSizing: "border-box", // Include padding and border in element's width and height
-    // margin: "24px",
-    borderRadius: "8px 8px 0px 0px",
-    // border: "1px solid #EAEAEA",
-    top: 0,
-    left: 0,
-    padding: "24px 20px 24px 20px",
-};
-export const LittleBox2 = {
-    height: "111px", // Fixed height
-    width: "100%",
-    background: "#FAFAFA",
-    display: "flex",
-    position: "relative", // Keep it relative to ensure scrolling
-    boxSizing: "border-box", // Include padding and border in element's width and height
-    // margin: "24px",
-    borderRadius: "0px",
-    borderTop: "1px solid #EAEAEA",
-    top: 0,
-    left: 0,
-    padding: "24px 20px 24px 20px",
-};
-export const LittleBox3 = {
-    height: "111px", // Fixed height
-    width: "100%",
-    background: "#FAFAFA",
-    display: "flex",
-    position: "relative", // Keep it relative to ensure scrolling
-    boxSizing: "border-box", // Include padding and border in element's width and height
-    // margin: "24px",
-    borderRadius: "0px",
-    borderTop: "1px solid #EAEAEA",
-    top: 0,
-    left: 0,
-    padding: "24px 20px 24px 20px",
-};
-export const LittleBox4 = {
-    height: "111px", // Fixed height
-    width: "100%",
-    background: "#FAFAFA",
-    display: "flex",
-    position: "relative", // Keep it relative to ensure scrolling
-    boxSizing: "border-box", // Include padding and border in element's width and height
-    // margin: "24px",
-    borderRadius: "0px 0px 8px 8px",
-    borderTop: "1px solid #EAEAEA",
-    borderBottom: "1px solid #EAEAEA",
-    top: 0,
-    left: 0,
-    padding: "24px 20px 24px 20px",
-};
-
 export const RightPortionUpperPart = {
     height: "191px",
     width: "100%",
@@ -112,14 +55,12 @@ export const RightPortionUpperPart = {
     display: "flex",
     position: "relative", // Keep it relative to ensure scrolling
     boxSizing: "border-box", // Include padding and border in element's width and height
-    // margin: "24px",
     borderRadius: "8px 8px 0 0",
-    // borderTop: "1px solid #EAEAEA",
-    // borderBottom: "1px solid #EAEAEA",
+    borderBottom: "1px solid #EAEAEA",
     top: 0,
     left: 0,
-    // padding: "24px 20px 24px 20px",
 };
+
 export const RightPortionLowerPart = {
     height: "252px",
     width: "100%",
@@ -127,13 +68,10 @@ export const RightPortionLowerPart = {
     display: "flex",
     position: "relative", // Keep it relative to ensure scrolling
     boxSizing: "border-box", // Include padding and border in element's width and height
-    // margin: "24px",
     borderRadius: "0 0 8px 8px",
     borderTop: "1px solid #EAEAEA",
-    // borderBottom: "1px solid #EAEAEA",
     top: 0,
     left: 0,
-    // padding: "24px 20px 24px 20px",
 };
 
 export const RightPortionUpperPartUpperPart = {
@@ -143,9 +81,7 @@ export const RightPortionUpperPartUpperPart = {
     display: "flex",
     position: "relative", // Keep it relative to ensure scrolling
     boxSizing: "border-box", // Include padding and border in element's width and height
-    // margin: "24px",
     borderRadius: "8px 8px 0 0",
-    // borderTop: "1px solid #EAEAEA",
     borderBottom: "1px solid #EAEAEA",
     top: 0,
     left: 0,
@@ -153,36 +89,149 @@ export const RightPortionUpperPartUpperPart = {
     alignItems: "center", // Add this to center vertically only
     justifyContent: "space-between", // Add this to create space between elements
 };
-export const RightPortionUpperPartLowerPart = {
+
+const MetricBox = ({ value, label }: { value: string; label: string }) => (
+    <Box
+        sx={{
+            height: "111px",
+            width: "25%",
+            background: "#FFFFFF",
+            display: "flex",
+            position: "relative",
+            boxSizing: "border-box",
+            borderRight: "1px solid #EAEAEA",
+            padding: "24px 20px 24px 20px",
+        }}
+    >
+        <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
+            <Box
+                sx={{
+                    height: "32px",
+                    width: "100%",
+                    background: "#FFFFFF",
+                    display: "flex",
+                    position: "relative",
+                    boxSizing: "border-box",
+                }}
+            >
+                <Typography
+                    sx={{
+                        fontSize: "24px",
+                        fontWeight: "500",
+                        color: "#101318",
+                    }}
+                >
+                    {value}
+                </Typography>
+            </Box>
+            <Box
+                sx={{
+                    height: "16px",
+                    width: "100%",
+                    background: "#FFFFFF",
+                    marginTop: "15px",
+                    display: "flex",
+                    position: "relative",
+                    boxSizing: "border-box",
+                }}
+            >
+                <Typography
+                    sx={{
+                        fontSize: "14px",
+                        fontWeight: "500",
+                        color: "#101318",
+                    }}
+                >
+                    {label}
+                </Typography>
+            </Box>
+        </Stack>
+    </Box>
+);
+
+const RevenueButton = ({ label }: { label: string }) => (
+    <Button
+        sx={{
+            height: "32px",
+            minWidth: "33px",
+            borderRadius: "4px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 0,
+            "&:hover": {
+                backgroundColor: "#5654D4",
+                "& .buttonText": {
+                    color: "#FFFFFF",
+                },
+            },
+            textTransform: "none",
+        }}
+    >
+        <Typography
+            className="buttonText"
+            sx={{
+                fontSize: "14px",
+                fontWeight: "500",
+                color: "#7C818A",
+            }}
+        >
+            {label}
+        </Typography>
+    </Button>
+);
+
+export const LittleBox1 = {
     height: "111px",
     width: "100%",
     background: "#FFFFFF",
     display: "flex",
-    position: "relative", // Keep it relative to ensure scrolling
-    boxSizing: "border-box", // Include padding and border in element's width and height
-    // margin: "24px",
-    // borderRadius: "0px 0px 8px 8px",
-    // borderTop: "1px solid #EAEAEA",
-    // borderBottom: "1px solid #EAEAEA",
-    top: 0,
-    left: 0,
-    // padding: "24px 20px 24px 20px",
+    position: "relative",
+    boxSizing: "border-box",
+    borderBottom: "1px solid #EAEAEA",
+    padding: "24px 20px 24px 20px",
 };
 
-/**
- * EcommerceBody component renders the main body of the e-commerce section.
- */
+export const LittleBox2 = {
+    height: "111px",
+    width: "100%",
+    background: "#FFFFFF",
+    display: "flex",
+    position: "relative",
+    boxSizing: "border-box",
+    borderBottom: "1px solid #EAEAEA",
+    padding: "24px 20px 24px 20px",
+};
+
+export const LittleBox3 = {
+    height: "111px",
+    width: "100%",
+    background: "#FFFFFF",
+    display: "flex",
+    position: "relative",
+    boxSizing: "border-box",
+    borderBottom: "1px solid #EAEAEA",
+    padding: "24px 20px 24px 20px",
+};
+
+export const LittleBox4 = {
+    height: "111px",
+    width: "100%",
+    background: "#FFFFFF",
+    display: "flex",
+    position: "relative",
+    boxSizing: "border-box",
+    borderBottom: "1px solid #EAEAEA",
+    padding: "24px 20px 24px 20px",
+};
+
 export default function EcommerceBody() {
     return (
         <Box sx={EcommerceBodyStyle}>
             <Box sx={LeftPortion}>
                 <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
                     <Box sx={LittleBox1}>
-                        <Stack
-                            direction="column"
-                            spacing={0}
-                            sx={{ width: "100%" }}
-                        >
+                        <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
                             <Box sx={{ height: "16px", width: "100%" }}>
                                 <Typography
                                     sx={{
@@ -229,11 +278,7 @@ export default function EcommerceBody() {
                         </Stack>
                     </Box>
                     <Box sx={LittleBox2}>
-                        <Stack
-                            direction="column"
-                            spacing={0}
-                            sx={{ width: "100%" }}
-                        >
+                        <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
                             <Box sx={{ height: "16px", width: "100%" }}>
                                 <Typography
                                     sx={{
@@ -280,11 +325,7 @@ export default function EcommerceBody() {
                         </Stack>
                     </Box>
                     <Box sx={LittleBox3}>
-                        <Stack
-                            direction="column"
-                            spacing={0}
-                            sx={{ width: "100%" }}
-                        >
+                        <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
                             <Box sx={{ height: "16px", width: "100%" }}>
                                 <Typography
                                     sx={{
@@ -331,11 +372,7 @@ export default function EcommerceBody() {
                         </Stack>
                     </Box>
                     <Box sx={LittleBox4}>
-                        <Stack
-                            direction="column"
-                            spacing={0}
-                            sx={{ width: "100%" }}
-                        >
+                        <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
                             <Box sx={{ height: "16px", width: "100%" }}>
                                 <Typography
                                     sx={{
@@ -386,11 +423,7 @@ export default function EcommerceBody() {
             <Box sx={RightPortion}>
                 <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
                     <Box sx={RightPortionUpperPart}>
-                        <Stack
-                            direction="column"
-                            spacing={0}
-                            sx={{ width: "100%" }}
-                        >
+                        <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
                             <Box sx={RightPortionUpperPartUpperPart}>
                                 <Typography
                                     sx={{
@@ -402,379 +435,27 @@ export default function EcommerceBody() {
                                     Revenue
                                 </Typography>
                                 <Box sx={{ height: "32px", width: "176px" }}>
-                                    <Stack
-                                        direction="row"
-                                        spacing={1}
-                                        width="100%"
-                                    >
-                                        <Button
-                                            sx={{
-                                                height: "32px",
-                                                minWidth: "33px",
-                                                borderRadius: "4px",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                cursor: "pointer",
-                                                padding: 0,
-                                                "&:hover": {
-                                                    backgroundColor: "#5654D4",
-                                                    "& .buttonText": {
-                                                        color: "#FFFFFF",
-                                                    },
-                                                },
-                                                textTransform: "none",
-                                            }}
-                                        >
-                                            <Typography
-                                                className="buttonText"
-                                                sx={{
-                                                    fontSize: "14px",
-                                                    fontWeight: "500",
-                                                    color: "#7C818A",
-                                                }}
-                                            >
-                                                All
-                                            </Typography>
-                                        </Button>
-                                        <Button
-                                            sx={{
-                                                height: "32px",
-                                                minWidth: "36px",
-                                                borderRadius: "4px",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                padding: 0,
-                                                "&:hover": {
-                                                    backgroundColor: "#5654D4",
-                                                    "& .buttonText": {
-                                                        color: "#FFFFFF",
-                                                    },
-                                                },
-                                                textTransform: "none",
-                                            }}
-                                        >
-                                            <Typography
-                                                className="buttonText"
-                                                sx={{
-                                                    fontSize: "14px",
-                                                    fontWeight: "500",
-                                                    color: "#7C818A",
-                                                }}
-                                            >
-                                                1M
-                                            </Typography>
-                                        </Button>
-                                        <Button
-                                            sx={{
-                                                height: "32px",
-                                                minWidth: "33px",
-                                                borderRadius: "4px",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                padding: 0,
-                                                "&:hover": {
-                                                    backgroundColor: "#5654D4",
-                                                    "& .buttonText": {
-                                                        color: "#FFFFFF",
-                                                    },
-                                                },
-                                                textTransform: "none",
-                                            }}
-                                        >
-                                            <Typography
-                                                className="buttonText"
-                                                sx={{
-                                                    fontSize: "14px",
-                                                    fontWeight: "500",
-                                                    color: "#7C818A",
-                                                }}
-                                            >
-                                                6M
-                                            </Typography>
-                                        </Button>
-                                        <Button
-                                            sx={{
-                                                height: "32px",
-                                                minWidth: "33px",
-                                                borderRadius: "4px",
-                                                display: "flex",
-                                                alignItems: "center",
-                                                justifyContent: "center",
-                                                padding: 0,
-                                                "&:hover": {
-                                                    backgroundColor: "#5654D4",
-                                                    "& .buttonText": {
-                                                        color: "#FFFFFF",
-                                                    },
-                                                },
-                                                textTransform: "none",
-                                            }}
-                                        >
-                                            <Typography
-                                                className="buttonText"
-                                                sx={{
-                                                    fontSize: "14px",
-                                                    fontWeight: "500",
-                                                    color: "#7C818A",
-                                                }}
-                                            >
-                                                1Y
-                                            </Typography>
-                                        </Button>
+                                    <Stack direction="row" spacing={1} width="100%">
+                                        <RevenueButton label="All" />
+                                        <RevenueButton label="1M" />
+                                        <RevenueButton label="6M" />
+                                        <RevenueButton label="1Y" />
                                     </Stack>
                                 </Box>
                             </Box>
-                            <Box sx={RightPortionUpperPartLowerPart}>
-                                <Box
-                                    sx={{
-                                        height: "111px",
-                                        width: "25%",
-                                        background: "#FFFFFF",
-                                        display: "flex",
-                                        position: "relative",
-                                        boxSizing: "border-box",
-                                        borderRight: "1px solid #EAEAEA",
-                                        top: 0,
-                                        left: 0,
-                                        padding: "24px 20px 24px 20px",
-                                    }}
-                                >
-                                    <Stack
-                                        direction="column"
-                                        spacing={0}
-                                        sx={{ width: "100%" }}
-                                    >
-                                        <Box
-                                            sx={{
-                                                height: "32px",
-                                                width: "100%",
-                                                background: "#FFFFFF",
-                                                display: "flex",
-                                                position: "relative",
-                                                boxSizing: "border-box",
-                                            }}
-                                        >
-                                            <Typography
-                                                sx={{
-                                                    fontSize: "24px",
-                                                    fontWeight: "500",
-                                                    color: "#101318",
-                                                }}
-                                            >
-                                                7,585
-                                            </Typography>
-                                        </Box>
-                                        <Box
-                                            sx={{
-                                                height: "16px",
-                                                width: "100%",
-                                                background: "#FFFFFF",
-                                                marginTop: "15px",
-                                                display: "flex",
-                                                position: "relative",
-                                                boxSizing: "border-box",
-                                            }}
-                                        >
-                                            <Typography
-                                                sx={{
-                                                    fontSize: "14px",
-                                                    fontWeight: "500",
-                                                    color: "#101318",
-                                                }}
-                                            >
-                                                Orders
-                                            </Typography>
-                                        </Box>
-                                    </Stack>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        height: "111px",
-                                        width: "25%",
-                                        background: "#FFFFFF",
-                                        display: "flex",
-                                        position: "relative",
-                                        boxSizing: "border-box",
-                                        borderRight: "1px solid #EAEAEA",
-                                        top: 0,
-                                        left: 0,
-                                        padding: "24px 20px 24px 20px",
-                                    }}
-                                >
-                                    <Stack
-                                        direction="column"
-                                        spacing={0}
-                                        sx={{ width: "100%" }}
-                                    >
-                                        <Box
-                                            sx={{
-                                                height: "32px",
-                                                width: "100%",
-                                                background: "#FFFFFF",
-                                                display: "flex",
-                                                position: "relative",
-                                                boxSizing: "border-box",
-                                            }}
-                                        >
-                                            <Typography
-                                                sx={{
-                                                    fontSize: "24px",
-                                                    fontWeight: "500",
-                                                    color: "#101318",
-                                                }}
-                                            >
-                                                $22.89K
-                                            </Typography>
-                                        </Box>
-                                        <Box
-                                            sx={{
-                                                height: "16px",
-                                                width: "100%",
-                                                background: "#FFFFFF",
-                                                marginTop: "15px",
-                                                display: "flex",
-                                                position: "relative",
-                                                boxSizing: "border-box",
-                                            }}
-                                        >
-                                            <Typography
-                                                sx={{
-                                                    fontSize: "14px",
-                                                    fontWeight: "500",
-                                                    color: "#101318",
-                                                }}
-                                            >
-                                                Earnings
-                                            </Typography>
-                                        </Box>
-                                    </Stack>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        height: "111px",
-                                        width: "25%",
-                                        background: "#FFFFFF",
-                                        display: "flex",
-                                        position: "relative",
-                                        boxSizing: "border-box",
-                                        borderRight: "1px solid #EAEAEA",
-                                        top: 0,
-                                        left: 0,
-                                        padding: "24px 20px 24px 20px",
-                                    }}
-                                >
-                                    <Stack
-                                        direction="column"
-                                        spacing={0}
-                                        sx={{ width: "100%" }}
-                                    >
-                                        <Box
-                                            sx={{
-                                                height: "32px",
-                                                width: "100%",
-                                                background: "#FFFFFF",
-                                                display: "flex",
-                                                position: "relative",
-                                                boxSizing: "border-box",
-                                            }}
-                                        >
-                                            <Typography
-                                                sx={{
-                                                    fontSize: "24px",
-                                                    fontWeight: "500",
-                                                    color: "#101318",
-                                                }}
-                                            >
-                                                367
-                                            </Typography>
-                                        </Box>
-                                        <Box
-                                            sx={{
-                                                height: "16px",
-                                                width: "100%",
-                                                background: "#FFFFFF",
-                                                marginTop: "15px",
-                                                display: "flex",
-                                                position: "relative",
-                                                boxSizing: "border-box",
-                                            }}
-                                        >
-                                            <Typography
-                                                sx={{
-                                                    fontSize: "14px",
-                                                    fontWeight: "500",
-                                                    color: "#101318",
-                                                }}
-                                            >
-                                                Refunds
-                                            </Typography>
-                                        </Box>
-                                    </Stack>
-                                </Box>
-                                <Box
-                                    sx={{
-                                        height: "111px",
-                                        width: "25%",
-                                        background: "#FFFFFF",
-                                        display: "flex",
-                                        position: "relative",
-                                        boxSizing: "border-box",
-                                        top: 0,
-                                        left: 0,
-                                        padding: "24px 20px 24px 20px",
-                                    }}
-                                >
-                                    <Stack
-                                        direction="column"
-                                        spacing={0}
-                                        sx={{ width: "100%" }}
-                                    >
-                                        <Box
-                                            sx={{
-                                                height: "32px",
-                                                width: "100%",
-                                                background: "#FFFFFF",
-                                                display: "flex",
-                                                position: "relative",
-                                                boxSizing: "border-box",
-                                            }}
-                                        >
-                                            <Typography
-                                                sx={{
-                                                    fontSize: "24px",
-                                                    fontWeight: "500",
-                                                    color: "#101318",
-                                                }}
-                                            >
-                                                18.93%
-                                            </Typography>
-                                        </Box>
-                                        <Box
-                                            sx={{
-                                                height: "16px",
-                                                width: "100%",
-                                                background: "#FFFFFF",
-                                                marginTop: "15px",
-                                                display: "flex",
-                                                position: "relative",
-                                                boxSizing: "border-box",
-                                            }}
-                                        >
-                                            <Typography
-                                                sx={{
-                                                    fontSize: "14px",
-                                                    fontWeight: "500",
-                                                    color: "#101318",
-                                                }}
-                                            >
-                                                Conversion Ration
-                                            </Typography>
-                                        </Box>
-                                    </Stack>
-                                </Box>
+                            <Box sx={RightPortionUpperPart}>
+                                {[
+                                    { value: "7,585", label: "Orders" },
+                                    { value: "$22.89K", label: "Earnings" },
+                                    { value: "367", label: "Refunds" },
+                                    { value: "18.93%", label: "Conversion Ratio" },
+                                ].map((metric, index) => (
+                                    <MetricBox
+                                        key={index}
+                                        value={metric.value}
+                                        label={metric.label}
+                                    />
+                                ))}
                             </Box>
                         </Stack>
                     </Box>
