@@ -157,7 +157,7 @@ export default function Section2() {
             subItems: ["Test 1", "Test 2", "Test 3"],
         },
         {
-            id: "project_management",
+            id: "projectManagement",
             label: "Project Management",
             subItems: ["Test 1", "Test 2", "Test 3"],
         },

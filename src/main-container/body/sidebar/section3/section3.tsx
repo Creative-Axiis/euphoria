@@ -155,7 +155,7 @@ export default function Section3() {
     const menuItems = useMemo(
         () => [
             {
-                id: "landing_page",
+                id: "landingPage",
                 label: "Landing Page",
                 subItems: ["Test 1", "Test 2", "Test 3"],
             },
