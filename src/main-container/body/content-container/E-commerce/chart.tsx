@@ -1,123 +1,270 @@
-import React, { useEffect, useRef } from 'react';
-import * as echarts from 'echarts';
+"use client";
 
-const Chart = () => {
-  const chartRef = useRef<HTMLDivElement>(null);
+import React from "react";
+import * as echarts from "echarts";
 
-  useEffect(() => {
-    if (!chartRef.current) return;
+interface ChartProps {
+    selectedPeriod: string;
+}
 
-    const chart = echarts.init(chartRef.current);
+const Chart: React.FC<ChartProps> = ({ selectedPeriod }) => {
+    const chartRef = React.useRef<HTMLDivElement>(null);
 
-    // Remove type annotation and let TypeScript infer the type
-    const option = {
-      tooltip: {
-        trigger: 'axis',
-        axisPointer: {
-          type: 'none'  // Changed from 'cross' to 'none'
-        }
-      },
-      grid: {
-        top: 20,        // Changed from 0 to 20px
-        left: 24,        // Changed back to 24px for left padding
-        right: 24,       // Changed back to 24px for right padding
-        bottom: 52,     // Increased to 52 to move content up
-        containLabel: false
-      },
-      xAxis: [{
-        type: 'category',
-        data: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        axisLine: {
-          lineStyle: {
-            color: '#E9E9E9',
-            width: 1,
-            type: 'solid'  // Added to match the solid border style
-          },
-          onZero: true,    // Changed to true
-          symbol: ['none', 'none']
-        },
-        boundaryGap: true,  // Added to ensure proper spacing
-        offset: 12,         // Added offset to move x-axis line down
-        axisTick: { show: false },
-        axisLabel: {
-          color: '#7C818A',
-          fontSize: 13,
-          fontFamily: 'Inter',
-          fontWeight: 500
-        },
-        axisPointer: {
-          show: false  // Added this to completely disable x-axis pointer
-        }
-      }],
-      yAxis: [{
-        type: 'value',
-        show: false,
-        max: 600  // Increased from 500 to allow taller bars
-      }, {
-        type: 'value',
-        show: false,
-        max: 1000  // Keep this the same for dots
-      }],
-      series: [
-        {
-          type: 'bar',
-          barWidth: 46.75,
-          barGap: '24px',     // Add gap between bars
-          itemStyle: {
-            color: '#5654D4',
-            borderRadius: [5, 5, 5, 5]
-          },
-          // Increased bar heights by ~1.5x
-          data: [100, 190, 280, 337, 217, 205, 298, 205, 324, 205, 190, 298]
-        },
-        {
-          // Descending line
-          type: 'line',
-          yAxisIndex: 1,
-          symbol: 'none',
-          lineStyle: {
-            color: '#5654D4',
-            width: 2
-          },
-          // Connect the dots properly
-          data: [[-1, 800], [0, 680]],  // Ensure it connects to the first dot
-          xAxisIndex: 0,  // Use the same xAxis as the main line
-          z: 2  // Ensure line appears above other elements
-        },
-        {
-          // Line series with adjusted values (reduced by ~12%)
-          type: 'line',
-          yAxisIndex: 1,
-          symbol: 'image://Dot.svg',  // Changed from 'circle' to use Dot.svg
-          symbolSize: [16, 16],       // Adjust size to match your SVG dimensions
-          lineStyle: {
-            color: '#5654D4',
-            width: 2
-          },
-          itemStyle: {
-            color: '#5654D4'
-          },
-          // Decreased values to move line up
-          data: [680, 700, 720, 800, 710, 690, 720, 690, 740, 690, 680, 720]
-        }
-      ]
-    };
+    React.useEffect(() => {
+        if (!chartRef.current) return;
 
-    chart.setOption(option as any); // Use type assertion as a last resort
+        const chart = echarts.init(chartRef.current);
 
-    const handleResize = () => {
-      chart.resize();
-    };
+        const getDataForPeriod = (period: string) => {
+            switch (period) {
+                case "All":
+                    return {
+                        xAxis: [
+                            "Jan",
+                            "Feb",
+                            "Mar",
+                            "Apr",
+                            "May",
+                            "Jun",
+                            "Jul",
+                            "Aug",
+                            "Sep",
+                            "Oct",
+                            "Nov",
+                            "Dec",
+                        ],
+                        barData: [
+                            100, 190, 280, 337, 217, 205, 298, 205, 324, 205,
+                            190, 298,
+                        ],
+                        lineData: [
+                            680, 700, 720, 800, 710, 690, 720, 690, 740, 690,
+                            680, 720,
+                        ],
+                    };
+                case "1M":
+                    return {
+                        xAxis: [
+                            "Jan",
+                            "Feb",
+                            "Mar",
+                            "Apr",
+                            "May",
+                            "Jun",
+                            "Jul",
+                            "Aug",
+                            "Sep",
+                            "Oct",
+                            "Nov",
+                            "Dec",
+                        ],
+                        barData: [
+                            298, 205, 324, 205, 190, 298, 100, 190, 280, 337,
+                            217, 205,
+                        ],
+                        lineData: [
+                            720, 690, 740, 690, 680, 720, 680, 700, 720, 800,
+                            710, 690,
+                        ],
+                    };
+                case "6M":
+                    return {
+                        xAxis: [
+                            "Jan",
+                            "Feb",
+                            "Mar",
+                            "Apr",
+                            "May",
+                            "Jun",
+                            "Jul",
+                            "Aug",
+                            "Sep",
+                            "Oct",
+                            "Nov",
+                            "Dec",
+                        ],
+                        barData: [
+                            337, 217, 205, 298, 100, 190, 280, 205, 324, 205,
+                            190, 298,
+                        ],
+                        lineData: [
+                            800, 710, 690, 720, 680, 700, 720, 690, 740, 690,
+                            680, 720,
+                        ],
+                    };
+                case "1Y":
+                    return {
+                        xAxis: [
+                            "Jan",
+                            "Feb",
+                            "Mar",
+                            "Apr",
+                            "May",
+                            "Jun",
+                            "Jul",
+                            "Aug",
+                            "Sep",
+                            "Oct",
+                            "Nov",
+                            "Dec",
+                        ],
+                        barData: [
+                            190, 298, 337, 100, 190, 280, 217, 205, 298, 205,
+                            324, 205,
+                        ],
+                        lineData: [
+                            680, 720, 800, 680, 700, 720, 710, 690, 720, 690,
+                            740, 690,
+                        ],
+                    };
+                default:
+                    return {
+                        xAxis: [
+                            "Jan",
+                            "Feb",
+                            "Mar",
+                            "Apr",
+                            "May",
+                            "Jun",
+                            "Jul",
+                            "Aug",
+                            "Sep",
+                            "Oct",
+                            "Nov",
+                            "Dec",
+                        ],
+                        barData: [
+                            190, 298, 337, 100, 190, 280, 217, 205, 298, 205,
+                            324, 205,
+                        ],
+                        lineData: [
+                            680, 720, 800, 680, 700, 720, 710, 690, 720, 690,
+                            740, 690,
+                        ],
+                    };
+            }
+        };
 
-    window.addEventListener('resize', handleResize);
+        const {
+            xAxis: xAxisData,
+            barData,
+            lineData,
+        } = getDataForPeriod(selectedPeriod);
 
-    return () => {
-      window.removeEventListener('resize', handleResize);
-      chart.dispose();
-    };
-  }, []);
+        const option = {
+            tooltip: {
+                trigger: "axis",
+                axisPointer: {
+                    type: "none",
+                },
+                formatter: function (params: any) {
+                    let tooltip = `Month: ${params[0].axisValue}<br/>`;
+                    params.forEach((param: any) => {
+                        if (param.seriesName === "Bar") {
+                            tooltip += `Bar Value: ${param.value}<br/>`;
+                        } else if (param.seriesName === "Line") {
+                            tooltip += `Line Value: ${param.value}`;
+                        }
+                    });
+                    return tooltip;
+                },
+                textStyle: {
+                    color: "#101318",
+                },
+            },
+            grid: {
+                top: 20,
+                left: 24,
+                right: 24,
+                bottom: 52,
+                containLabel: false,
+            },
+            xAxis: [
+                {
+                    type: "category",
+                    data: xAxisData,
+                    axisLine: {
+                        lineStyle: {
+                            color: "#E9E9E9",
+                            width: 1,
+                            type: "solid",
+                        },
+                        onZero: true,
+                        symbol: ["none", "none"],
+                    },
+                    boundaryGap: true,
+                    offset: 12,
+                    axisTick: { show: false },
+                    axisLabel: {
+                        color: "#7C818A",
+                        fontSize: 13,
+                        fontFamily: "Inter",
+                        fontWeight: 500,
+                    },
+                    axisPointer: {
+                        type: "shadow",
+                    },
+                },
+            ],
+            yAxis: [
+                {
+                    type: "value",
+                    show: false,
+                    max: 600,
+                },
+                {
+                    type: "value",
+                    show: false,
+                    max: 1000,
+                },
+            ],
+            series: [
+                {
+                    name: "Bar",
+                    type: "bar",
+                    barWidth: 46.75,
+                    barGap: "24px",
+                    itemStyle: {
+                        color: "#5654D4",
+                        borderRadius: [5, 5, 5, 5],
+                    },
+                    data: barData,
+                },
+                {
+                    name: "Line",
+                    type: "line",
+                    yAxisIndex: 1,
+                    symbol: "circle",
+                    symbolSize: 8,
+                    lineStyle: {
+                        color: "#5654D4",
+                        width: 2,
+                    },
+                    itemStyle: {
+                        color: "#5654D4",
+                        borderWidth: 2,
+                        borderColor: "#FFFFFF",
+                    },
+                    data: lineData,
+                },
+            ],
+        };
 
-  return <div ref={chartRef} style={{ height: '252px', width: '100%' }} />;
+        chart.setOption(option as any);
+
+        const handleResize = () => {
+            chart.resize();
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            chart.dispose();
+        };
+    }, [selectedPeriod]);
+
+    return <div ref={chartRef} style={{ height: "252px", width: "100%" }} />;
 };
 
 export default Chart;
