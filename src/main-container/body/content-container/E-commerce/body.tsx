@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Chart from "./chart";
 import { useState } from "react";
 
+// Replace style objects with new ones
 export const EcommerceBodyStyle = {
     height: "492px", // Fixed height
     minHeight: "492px", // Ensure minimum height is also fixed
@@ -23,7 +24,7 @@ export const EcommerceBodyStyle = {
 
 export const LeftPortion = {
     height: "444px", // Fixed height
-    width: "287px",
+    width: "287px", // Fixed width
     background: "#FAFAFA",
     display: "flex",
     position: "relative", // Keep it relative to ensure scrolling
@@ -231,43 +232,47 @@ interface PeriodMetrics {
 export const LittleBox1 = {
     height: "111px",
     width: "100%",
-    background: "#FFFFFF",
+    background: "#FAFAFA",
     display: "flex",
     position: "relative",
     boxSizing: "border-box",
-    borderBottom: "1px solid #EAEAEA",
+    borderRadius: "8px 8px 0px 0px",
     padding: "24px 20px 24px 20px",
 };
 
 export const LittleBox2 = {
     height: "111px",
     width: "100%",
-    background: "#FFFFFF",
+    background: "#FAFAFA",
     display: "flex",
     position: "relative",
     boxSizing: "border-box",
-    borderBottom: "1px solid #EAEAEA",
+    borderRadius: "0px",
+    borderTop: "1px solid #EAEAEA",
     padding: "24px 20px 24px 20px",
 };
 
 export const LittleBox3 = {
     height: "111px",
     width: "100%",
-    background: "#FFFFFF",
+    background: "#FAFAFA",
     display: "flex",
     position: "relative",
     boxSizing: "border-box",
-    borderBottom: "1px solid #EAEAEA",
+    borderRadius: "0px",
+    borderTop: "1px solid #EAEAEA",
     padding: "24px 20px 24px 20px",
 };
 
 export const LittleBox4 = {
     height: "111px",
     width: "100%",
-    background: "#FFFFFF",
+    background: "#FAFAFA",
     display: "flex",
     position: "relative",
     boxSizing: "border-box",
+    borderRadius: "0px 0px 8px 8px",
+    borderTop: "1px solid #EAEAEA",
     borderBottom: "1px solid #EAEAEA",
     padding: "24px 20px 24px 20px",
 };
@@ -280,52 +285,21 @@ export default function EcommerceBody() {
     return (
         <Box sx={EcommerceBodyStyle}>
             <Box sx={LeftPortion}>
-                <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
+                <Stack direction="column" spacing={0} sx={{ width: "287px" }}>
                     <Box sx={LittleBox1}>
-                        <Stack
-                            direction="column"
-                            spacing={0}
-                            sx={{ width: "100%" }}
-                        >
+                        {/* ...new left portion structure as provided */}
+                        <Stack direction="column" spacing={0} sx={{ width: "100%" }}>
                             <Box sx={{ height: "16px", width: "100%" }}>
-                                <Typography
-                                    sx={{
-                                        fontSize: "14px",
-                                        fontWeight: "500",
-                                        color: "#101318",
-                                    }}
-                                >
+                                <Typography sx={{ fontSize: "14px", fontWeight: "500", color: "#101318" }}>
                                     Total Earnings
                                 </Typography>
                             </Box>
-                            <Box
-                                sx={{
-                                    height: "32px",
-                                    width: "100%",
-                                    marginTop: "15px",
-                                }}
-                            >
-                                <Stack
-                                    direction="row"
-                                    spacing={1}
-                                    alignItems="baseline" // Add this to align text properly
-                                >
-                                    <Typography
-                                        sx={{
-                                            fontSize: "24px",
-                                            fontWeight: "500",
-                                            color: "#101318",
-                                        }}
-                                    >
+                            <Box sx={{ height: "32px", width: "100%", marginTop: "15px" }}>
+                                <Stack direction="row" spacing={1} alignItems="baseline">
+                                    <Typography sx={{ fontSize: "24px", fontWeight: "500", color: "#101318" }}>
                                         $559.25k
                                     </Typography>
-                                    <Typography
-                                        sx={{
-                                            fontSize: "13px",
-                                            fontWeight: "500",
-                                            color: "#24733B",
-                                        }}
-                                    >
+                                    <Typography sx={{ fontSize: "13px", fontWeight: "500", color: "#24733B" }}>
                                         +16.43%
                                     </Typography>
                                 </Stack>
@@ -499,7 +473,7 @@ export default function EcommerceBody() {
                                 <Typography
                                     sx={{
                                         fontSize: "14px",
-                                        fontWeight: "500",
+                                        fontWeight: "600",
                                         color: "#101318",
                                     }}
                                 >
