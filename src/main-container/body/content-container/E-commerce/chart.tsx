@@ -268,3 +268,5 @@ const Chart: React.FC<ChartProps> = ({ selectedPeriod }) => {
 };
 
 export default Chart;
+
+
