@@ -92,7 +92,7 @@ export const RightPortionUpperPartUpperPart = {
     justifyContent: "space-between", // Add this to create space between elements
 };
 
-const MetricBox = ({ value, label }: { value: string; label: string }) => (
+const MetricBox = ({ value, label, showBorder = true }: { value: string; label: string; showBorder?: boolean }) => (
     <Box
         sx={{
             height: "111px",
@@ -101,7 +101,7 @@ const MetricBox = ({ value, label }: { value: string; label: string }) => (
             display: "flex",
             position: "relative",
             boxSizing: "border-box",
-            borderRight: "1px solid #EAEAEA",
+            borderRight: showBorder ? "1px solid #EAEAEA" : "none",
             padding: "24px 20px 24px 20px",
         }}
     >
@@ -521,6 +521,7 @@ export default function EcommerceBody() {
                                 <MetricBox
                                     value={currentMetrics.conversionRatio}
                                     label="Conversion Ratio"
+                                    showBorder={false}
                                 />
                             </Box>
                         </Stack>
